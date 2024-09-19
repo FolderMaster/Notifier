@@ -6,6 +6,14 @@
 
         public string Description { get; }
 
-        public IEnumerable<DiscordCommandOptions> Options { get; }
+        public IEnumerable<DiscordCommandOption> Options { get; }
+
+        public DiscordCommand(string name, string description,
+            IEnumerable<DiscordCommandOption>? options = null)
+        {
+            Name = name;
+            Description = description;
+            Options = options ?? Enumerable.Empty<DiscordCommandOption>();
+        }
     }
 }
