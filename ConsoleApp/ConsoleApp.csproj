@@ -10,6 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DiscordBot\DiscordBot.csproj" />
     <ProjectReference Include="..\DiscordBot\Model.Discord.csproj" />
+    <ProjectReference Include="..\Model.Discord\Model.Discord.csproj" />
   </ItemGroup>
 
 </Project>

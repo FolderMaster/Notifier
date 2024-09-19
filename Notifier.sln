@@ -5,11 +5,11 @@ VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{DF7DDB35-10C4-4FE5-AD48-0D54F344EE70}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.Discord", "DiscordBot\Model.Discord.csproj", "{EBAA46A5-2F16-4380-9AC4-916EED7E270B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.Discord", "Model.Discord\Model.Discord.csproj", "{EBAA46A5-2F16-4380-9AC4-916EED7E270B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{C5C9EE30-8472-4B07-A688-0F8AFE9B738F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.Email", "Model.Email\Model.Email.csproj", "{1D2967A2-D752-48D7-841D-478D31D6316A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.Email", "Model.Email\Model.Email.csproj", "{1D2967A2-D752-48D7-841D-478D31D6316A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
