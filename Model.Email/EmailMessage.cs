@@ -4,9 +4,9 @@
     {
         public object Content { get; }
 
-        public string Subject { get; }
+        public string? Subject { get; }
 
-        public EmailMessage(object content, string subject)
+        public EmailMessage(object content, string? subject)
         {
             Content = content;
             Subject = subject;

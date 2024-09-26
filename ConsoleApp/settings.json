@@ -1,0 +1,17 @@
+{
+  "DataBase": {
+    "ConnectionString": "Data Source=UserData.db"
+  },
+  "Discord": {
+    "Token": ""
+  },
+  "Email": {
+    "Url": "",
+    "Port": 0
+  },
+  "Jira": {
+    "Url": "",
+    "Username": "",
+    "Password": ""
+  }
+}

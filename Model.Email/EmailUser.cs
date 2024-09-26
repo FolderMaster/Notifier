@@ -1,6 +1,6 @@
 ﻿namespace Model.Email
 {
-    internal class EmailUser : IUser
+    public class EmailUser : IUser
     {
         public object Id { get; }
 

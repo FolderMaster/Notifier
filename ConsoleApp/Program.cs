@@ -1,40 +1,80 @@
-﻿using Model;
+﻿using Microsoft.Extensions.Configuration;
+
+using Model;
 using Model.Discord;
+using Model.Email;
+using Model.Jira;
 
-var token = "";
+using ConsoleApp.Settings;
+using ConsoleApp.Data;
 
-var bot = new DiscordBot(token);
-bot.Log += Bot_Log;
-bot.MessageReceived += Bot_MessageReceived;
+var configuration = new ConfigurationBuilder().AddJsonFile("settings.json").Build();
+var settings = configuration.Get<Settings>();
+
+var dataBaseContext = new DataBaseContext(settings.DataBase.ConnectionString);
+dataBaseContext.Database.EnsureCreated();
+
+Console.WriteLine("Данные пользователей:");
+Console.WriteLine("Id\tDiscordId\tJiraId\tEmailAddress");
+foreach (var userData in dataBaseContext.UserData)
+{
+    Console.WriteLine($"{userData.Id}\t{userData.DiscordId}\t" +
+        $"{userData.JiraId}\t{userData.EmailAddress}");
+}
+
+//var emailSender = new EmailSender(settings.Email.Url, settings.Email.Port);
+//var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.Url, settings.Jira.Url);
+
+var discordBot = new DiscordBot(settings.Discord.Token);
+//bot.Log += Bot_Log;
+//discordBot.MessageReceived += Bot_MessageReceived;
 
 var commandsTasks = new Dictionary<ICommand, DiscordCommandDelegate>();
 commandsTasks.Add(new DiscordCommand("help", "Describe commands.",
-    [new DiscordCommandOption("command", "Described command.", typeof(string), false)]),
+    [new DiscordCommandOption("command", "Described command.", typeof(string))]),
     ExecuteHelpCommand);
 commandsTasks.Add(new DiscordCommand("reg", "Register user.",
-    [new DiscordCommandOption("jira", "Jira ID.", typeof(long), true),
-    new DiscordCommandOption("email", "Email address.", typeof(string), true)]),
+    [new DiscordCommandOption("jira", "Jira ID.", typeof(string), true),
+    new DiscordCommandOption("email", "Email address.", typeof(string))]),
     ExecuteRegCommand);
+var botCommandHelper = new DiscordBotCommandHelper(discordBot, commandsTasks);
+discordBot.Ready += Bot_Ready;
 
-var botCommandHelper = new DiscordBotCommandHelper(bot, commandsTasks);
-bot.Start().GetAwaiter().GetResult();
+discordBot.Start().GetAwaiter().GetResult();
 
-async Task Bot_MessageReceived(object sender, MessageEventArgs args)
+/**Task Bot_MessageReceived(object sender, MessageEventArgs args)
 {
-    if (args.User is DiscordUser discordUser)
+    var content = $"Message received: author(ID:{args.User.Id}), channel(ID:{args.Channel.Id})" +
+        $"\nContent:\n{args.Message.Content}";
+    Console.WriteLine(content);
+    return Task.CompletedTask;
+}**/
+
+async Task Bot_Ready(object sender, EventArgs args)
+{
+    while (true)
     {
-        if (!discordUser.IsBot)
+        Console.WriteLine("Отправка сообщения.");
+        Console.WriteLine("Введите контент сообщения:");
+        var messageContent = Console.ReadLine();
+        Console.WriteLine("Введите ID пользователя:");
+        var userId = int.Parse(Console.ReadLine());
+        if (SendMessageUser(userId, messageContent))
         {
-            await bot.SendMessage(new DiscordMessage("Привет!"), args.User, args.Channel);
+            Console.WriteLine("Сообщение отправлено пользователю.");
+        }
+        else
+        {
+            Console.WriteLine("Ошибка при отправке сообщения пользователю!");
         }
     }
 }
 
-Task Bot_Log(object sender, LogEventArgs args)
+/**Task Bot_Log(object sender, LogEventArgs args)
 {
     Console.WriteLine(args.Content);
     return Task.CompletedTask;
-}
+}**/
 
 async Task ExecuteHelpCommand(DiscordCommandEventArgs args)
 {
@@ -90,13 +130,76 @@ async Task ExecuteHelpCommand(DiscordCommandEventArgs args)
 
 async Task ExecuteRegCommand(DiscordCommandEventArgs args)
 {
-    var discordId = args.User.Id;
-    var jiraId = (long)args.Options["jira"];
-    var emailAddress = (string)args.Options["email"];
-    var content = "Thanks for registration! Your parameters:\n" +
-        $"Discord ID: {discordId}\n" +
-        $"Jira ID: {jiraId}\n" +
-        $"Email address: {emailAddress}";
-    await args.SendMessage(new DiscordBotMessage(content, true));
+    var discordId = (ulong)args.User.Id;
+    var jiraId = (string)args.Options["jira"];
+    args.Options.TryGetValue("email", out var email);
+    var emailAddress = (string?)email;
 
+    var content = "";
+    if (RegisterUser(discordId, jiraId, emailAddress))
+    {
+        content = "Thanks for registration! Your parameters:\n" +
+            $"Discord ID: {discordId}\n" +
+            $"Jira ID: {jiraId}\n" +
+            (emailAddress != null ? $"Email address: {emailAddress}" : "");
+    }
+    else
+    {
+        content = "Error in registration!";
+    }
+    await args.SendMessage(new DiscordBotMessage(content, true));
+}
+
+bool RegisterUser(ulong discordId, string jiraId, string? emailAddress)
+{
+    /**var isJiraChecked = jiraClient.CheckUserId(jiraId).Result;
+    var isEmailChecked = true;
+    if(emailAddress != null)
+    {
+        isEmailChecked = emailSender.CheckUserId(jiraId).Result;
+    }
+    if (!isJiraChecked || !isEmailChecked)
+    {
+        return false;
+    }**/
+    var userData = dataBaseContext.UserData.FirstOrDefault((u) => u.DiscordId == discordId);
+    if (userData == null)
+    {
+        dataBaseContext.UserData.Add(new UserData(discordId, emailAddress, jiraId));
+        dataBaseContext.SaveChanges();
+
+        Console.WriteLine("Регистрация:");
+        Console.WriteLine("Id\tDiscordId\tJiraId\tEmailAddress");
+        Console.WriteLine($"{userData.Id}\t{userData.DiscordId}\t" +
+            $"{userData.JiraId}\t{userData.EmailAddress}");
+    }
+    else
+    {
+        userData.JiraId = jiraId;
+        userData.EmailAddress = emailAddress;
+        dataBaseContext.SaveChanges();
+
+        Console.WriteLine("Обновлены данные:");
+        Console.WriteLine("Id\tDiscordId\tJiraId\tEmailAddress");
+        Console.WriteLine($"{userData.Id}\t{userData.DiscordId}\t" +
+            $"{userData.JiraId}\t{userData.EmailAddress}");
+    }
+    
+    return true;
+}
+
+bool SendMessageUser(int userId, string messageContent)
+{
+    var userData = dataBaseContext.UserData.FirstOrDefault((u) => u.Id == userId);
+    if (userData == null)
+    {
+        return false;
+    }
+    var discordTask = discordBot.SendMessage(new DiscordMessage(messageContent),
+        new DiscordUser(userData.DiscordId, false));
+    discordTask.Wait();
+    /**var emailTask = emailSender.SendMessage(new EmailMessage(messageContent),
+        new EmailUser(userData.EmailAddress));
+    emailTask.Wait();**/
+    return discordTask.IsCompletedSuccessfully /** && emailTask.IsCompletedSuccessfully**/;
 }

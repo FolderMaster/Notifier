@@ -40,6 +40,14 @@ namespace Model.Discord
             await Task.Delay(-1);
         }
 
+        public Task<bool> CheckUserId(object userId)
+        {
+            ArgumentNullException.ThrowIfNull(userId, nameof(userId));
+
+            return _client.GetUserAsync((ulong)userId).AsTask().
+                ContinueWith(task => task.Result != null);
+        }
+
         public async Task SendMessage(IMessage message, IUser user)
         {
             ArgumentNullException.ThrowIfNull(message, nameof(message));
