@@ -3,7 +3,14 @@
     "ConnectionString": "Data Source=UserData.db"
   },
   "Discord": {
-    "Token": ""
+    "Token": "",
+    "Proxy": {
+      "Url": "",
+      "Credentials": {
+        "User": "",
+        "Password": ""
+      }
+    }
   },
   "Email": {
     "Url": "",
@@ -11,7 +18,7 @@
   },
   "Jira": {
     "Url": "",
-    "Username": "",
+    "User": "",
     "Password": ""
   }
 }

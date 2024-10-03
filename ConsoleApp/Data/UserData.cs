@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleApp.Data
 {
-    [PrimaryKey(nameof(Id))]
+    //[PrimaryKey(nameof(Id))]
     public class UserData
     {
         public int Id { get; set; }

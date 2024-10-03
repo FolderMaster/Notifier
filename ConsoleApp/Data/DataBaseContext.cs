@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleApp.Data
 {
-    public class DataBaseContext : DbContext
+    /**public class DataBaseContext : DbContext
     {
         public readonly string _connectionString;
 
@@ -19,5 +19,5 @@ namespace ConsoleApp.Data
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite(_connectionString).EnableDetailedErrors();
         }
-    }
+    }**/
 }

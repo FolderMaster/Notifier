@@ -20,9 +20,16 @@ namespace Model.Jira
         public Task<bool> CheckUserId(object userId)
         {
             ArgumentNullException.ThrowIfNull(userId, nameof(userId));
-
-            return _jiraClient.Users.GetUserAsync((string)userId).
-                ContinueWith(task => task.Result != null);
+            try
+            {
+                _jiraClient.Users.GetUserAsync((string)userId).
+                    GetAwaiter().GetResult();
+                return Task.FromResult(true);
+            }
+            catch
+            {
+                return Task.FromResult(false);
+            }
         }
     }
 }

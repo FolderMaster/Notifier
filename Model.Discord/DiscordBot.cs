@@ -1,5 +1,8 @@
 ﻿using Discord;
+using Discord.Net.Rest;
+using Discord.Net.WebSockets;
 using Discord.WebSocket;
+using System.Net;
 
 namespace Model.Discord
 {
@@ -23,10 +26,16 @@ namespace Model.Discord
 
         public event TaskEventHandler Ready;
 
-        public DiscordBot(string token)
+        public DiscordBot(string token, IWebProxy? proxy = null)
         {
             _token = token;
-            _client = new DiscordSocketClient();
+            var settings = new DiscordSocketConfig();
+            if (proxy != null)
+            {
+                settings.WebSocketProvider = DefaultWebSocketProvider.Create(proxy);
+                settings.RestClientProvider = DefaultRestClientProvider.Create(true);
+            }
+            _client = new DiscordSocketClient(settings);
             _client.Log += Client_Log;
             _client.Ready += Client_Ready;
             _client.MessageReceived += Client_MessageReceived;
@@ -91,7 +100,8 @@ namespace Model.Discord
 
             var applicationCommands = _client.BulkOverwriteGlobalApplicationCommandsAsync
                 (commandsProperties.ToArray()).Result;
-            _commands = applicationCommands.Select(a => a.Id).Zip(commands).ToDictionary();
+            _commands = applicationCommands.Select(a => a.Id).Zip(commands).
+                ToDictionary(c => c.First, c => c.Second);
 
             return Task.CompletedTask;
         }
