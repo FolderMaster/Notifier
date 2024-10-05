@@ -1,16 +1,9 @@
 {
   "DataBase": {
-    "ConnectionString": "Data Source=UserData.db"
+    "FileName": "userdata.json"
   },
   "Discord": {
-    "Token": "",
-    "Proxy": {
-      "Url": "",
-      "Credentials": {
-        "User": "",
-        "Password": ""
-      }
-    }
+    "Token": ""
   },
   "Email": {
     "Url": "",

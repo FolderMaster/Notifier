@@ -1,12 +1,7 @@
-﻿//using Microsoft.EntityFrameworkCore;
-
-namespace ConsoleApp.Data
+﻿namespace ConsoleApp.Data
 {
-    //[PrimaryKey(nameof(Id))]
     public class UserData
     {
-        public int Id { get; set; }
-
         public ulong DiscordId { get; set; }
 
         public string? EmailAddress { get; set; }

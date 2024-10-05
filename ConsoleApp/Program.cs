@@ -12,16 +12,17 @@ using System.Net;
 var configuration = new ConfigurationBuilder().AddJsonFile("settings.json").Build();
 var settings = configuration.Get<Settings>();
 
-//var dataBaseContext = new DataBaseContext(settings.DataBase.ConnectionString);
-//dataBaseContext.Database.EnsureCreated();
+var dataBaseContext = new JsonDataBaseContext(settings.DataBase.FileName);
+dataBaseContext.Load();
 
-/**Console.WriteLine("Данные пользователей:");
-Console.WriteLine("Id\tDiscordId\tJiraId\tEmailAddress");
-foreach (var userData in dataBaseContext.UserData)
+Console.WriteLine("Данные пользователей:");
+Console.WriteLine("Index\tDiscordId\tJiraId\tEmailAddress");
+for (var i = 0; i < dataBaseContext.UserData.Count; i++)
 {
-    Console.WriteLine($"{userData.Id}\t{userData.DiscordId}\t" +
+    var userData = dataBaseContext.UserData[i];
+    Console.WriteLine($"{i}\t{userData.DiscordId}\t" +
         $"{userData.JiraId}\t{userData.EmailAddress}");
-}**/
+}
 
 //var emailSender = new EmailSender(settings.Email.Url, settings.Email.Port);
 //var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password);
@@ -164,42 +165,47 @@ bool RegisterUser(ulong discordId, string jiraId, string? emailAddress)
     {
         return false;
     }**/
-    /**var userData = dataBaseContext.UserData.FirstOrDefault((u) => u.DiscordId == discordId);
+    var userData = dataBaseContext.UserData.FirstOrDefault((u) => u.DiscordId == discordId);
     if (userData == null)
     {
-        dataBaseContext.UserData.Add(new UserData(discordId, emailAddress, jiraId));
-        dataBaseContext.SaveChanges();
+        userData = new UserData(discordId, emailAddress, jiraId);
+        var index = dataBaseContext.UserData.Count;
+
+        dataBaseContext.UserData.Add(userData);
+        dataBaseContext.Save();
 
         Console.WriteLine("Регистрация:");
-        Console.WriteLine("Id\tDiscordId\tJiraId\tEmailAddress");
-        Console.WriteLine($"{userData.Id}\t{userData.DiscordId}\t" +
+        Console.WriteLine("Index\tDiscordId\tJiraId\tEmailAddress");
+        Console.WriteLine($"{index}\t{userData.DiscordId}\t" +
             $"{userData.JiraId}\t{userData.EmailAddress}");
     }
     else
     {
+        var index = dataBaseContext.UserData.IndexOf(userData);
         userData.JiraId = jiraId;
         userData.EmailAddress = emailAddress;
-        dataBaseContext.SaveChanges();
 
-        Console.WriteLine("Обновлены данные:");
-        Console.WriteLine("Id\tDiscordId\tJiraId\tEmailAddress");
-        Console.WriteLine($"{userData.Id}\t{userData.DiscordId}\t" +
+        dataBaseContext.Save();
+
+        Console.WriteLine("Обновленые данные:");
+        Console.WriteLine("Index\tDiscordId\tJiraId\tEmailAddress");
+        Console.WriteLine($"{index}\t{userData.DiscordId}\t" +
             $"{userData.JiraId}\t{userData.EmailAddress}");
-    }**/
+    }
     
     return true;
 }
 
-bool SendMessageUser(int userId, string messageContent)
+bool SendMessageUser(int userIndex, string messageContent)
 {
-    /**var userData = dataBaseContext.UserData.FirstOrDefault((u) => u.Id == userId);
-    if (userData == null)
+    if (userIndex >= dataBaseContext.UserData.Count)
     {
         return false;
     }
+    var userData = dataBaseContext.UserData[userIndex];
     var discordTask = discordBot.SendMessage(new DiscordMessage(messageContent),
         new DiscordUser(userData.DiscordId, false));
-    discordTask.Wait();**/
+    discordTask.Wait();
     /**var emailTask = emailSender.SendMessage(new EmailMessage(messageContent),
         new EmailUser(userData.EmailAddress));
     emailTask.Wait();**/
