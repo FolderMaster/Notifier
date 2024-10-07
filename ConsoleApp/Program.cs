@@ -1,13 +1,15 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-using Model;
+using Model.Technical;
+using Model.Senders.Bots;
 using Model.Discord;
+using Model.Discord.Commands;
+using Model.Discord.Messages;
 using Model.Email;
 using Model.Jira;
 
 using ConsoleApp.Settings;
 using ConsoleApp.Data;
-using System.Net;
 
 var configuration = new ConfigurationBuilder().AddJsonFile("settings.json").Build();
 var settings = configuration.Get<Settings>();
@@ -37,8 +39,10 @@ commandsTasks.Add(new DiscordCommand("help", "Describe commands.",
     ExecuteHelpCommand);
 commandsTasks.Add(new DiscordCommand("reg", "Register user.",
     new List<DiscordCommandOption>()
-    { new DiscordCommandOption("jira", "Jira ID.", typeof(string), true),
-    new DiscordCommandOption("email", "Email address.", typeof(string)) }),
+    {
+        new DiscordCommandOption("jira", "Jira ID.", typeof(string), true),
+        new DiscordCommandOption("email", "Email address.", typeof(string))
+    }),
     ExecuteRegCommand);
 var botCommandHelper = new DiscordBotCommandHelper(discordBot, commandsTasks);
 discordBot.Ready += Bot_Ready;
@@ -139,18 +143,26 @@ async Task ExecuteRegCommand(DiscordCommandEventArgs args)
     var emailAddress = (string?)email;
 
     var content = "";
+    var embed = (DiscordEmbed?)null;
     if (RegisterUser(discordId, jiraId, emailAddress))
     {
-        content = "Thanks for registration! Your parameters:\n" +
-            $"Discord ID: {discordId}\n" +
-            $"Jira ID: {jiraId}\n" +
-            (emailAddress != null ? $"Email address: {emailAddress}" : "");
+        content = "Thanks for registration!";
+        var embedFields = new List<DiscordEmbedField>()
+        {
+            new DiscordEmbedField("Discord ID", discordId),
+            new DiscordEmbedField("Jira ID", jiraId),
+        };
+        embed = new DiscordEmbed("Properties", null, embedFields);
+        if (emailAddress != null)
+        {
+            embedFields.Add(new DiscordEmbedField("Email address", emailAddress));
+        }
     }
     else
     {
         content = "Error in registration!";
     }
-    await args.SendMessage(new DiscordBotMessage(content, true));
+    await args.SendMessage(new DiscordCommandMessage(content, true, embed));
 }
 
 bool RegisterUser(ulong discordId, string jiraId, string? emailAddress)

@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace Model.Senders
 {
     public interface IChannel
     {

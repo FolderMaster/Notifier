@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace Model.Senders.Bots
 {
     public interface ICommand
     {

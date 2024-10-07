@@ -1,4 +1,7 @@
-﻿namespace Model.Discord
+﻿using Model.Discord.Commands;
+using Model.Senders.Bots;
+
+namespace Model.Discord
 {
     public class DiscordBotCommandHelper : BotCommandHelper
     {

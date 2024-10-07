@@ -1,4 +1,6 @@
-﻿namespace Model
+﻿using Model.Senders;
+
+namespace Model.Senders.Bots
 {
     public class CommandEventArgs
     {

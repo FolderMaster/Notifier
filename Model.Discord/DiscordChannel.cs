@@ -1,4 +1,6 @@
-﻿namespace Model.Discord
+﻿using Model.Senders;
+
+namespace Model.Discord
 {
     public class DiscordChannel : IChannel
     {

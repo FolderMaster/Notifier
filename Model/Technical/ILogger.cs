@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace Model.Technical
 {
     public interface ILogger
     {

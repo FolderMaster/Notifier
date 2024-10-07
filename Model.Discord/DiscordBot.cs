@@ -4,6 +4,14 @@ using Discord.Net.WebSockets;
 using Discord.WebSocket;
 using System.Net;
 
+using Model.Technical;
+using Model.Discord.Commands;
+using Model.Senders.Bots;
+using Model.Discord.Messages;
+
+using IMessage = Model.Senders.IMessage;
+using IChannel = Model.Senders.IChannel;
+
 namespace Model.Discord
 {
     public class DiscordBot : IBot, IService, ILogger
@@ -135,7 +143,12 @@ namespace Model.Discord
             }
             else
             {
-                await messageChannel.SendMessageAsync($"<@{user.Id}>, {message.Content}");
+                var embed = (Embed?)null;
+                if (message is DiscordMessage discordMessage)
+                {
+                    embed = discordMessage.Embed?.CreateEmbed();
+                }
+                await messageChannel.SendMessageAsync($"<@{user.Id}>, {message.Content}", embed: embed);
             }
         }
 
@@ -181,11 +194,17 @@ namespace Model.Discord
                 var sendMessage = (SendMessageDelegate)(async (IMessage message) =>
                 {
                     var isEphemeral = false;
-                    if (message is DiscordBotMessage discordBotMessage)
+                    var embed = (Embed?)null;
+                    if (message is DiscordMessage discordMessage)
                     {
-                        isEphemeral = discordBotMessage.IsEphemeral;
+                        embed = discordMessage.Embed?.CreateEmbed();
+                        if(discordMessage is DiscordCommandMessage discordCommandMessage)
+                        {
+                            isEphemeral = discordCommandMessage.IsEphemeral;
+                        }
                     }
-                    await arg.RespondAsync(message.Content?.ToString(), ephemeral: isEphemeral);
+                    await arg.RespondAsync(message.Content?.ToString(), embed: embed,
+                        ephemeral: isEphemeral);
                 });
 
                 await CommandReceived.Invoke(this,

@@ -1,4 +1,6 @@
-﻿namespace Model.Email
+﻿using Model.Senders;
+
+namespace Model.Email
 {
     public class EmailMessage : IMessage
     {

@@ -1,11 +1,14 @@
 ﻿using Discord;
+using System.Collections.ObjectModel;
 
-namespace Model.Discord
+using IChannel = Model.Senders.IChannel;
+
+namespace Model.Discord.Commands
 {
     public class DiscordCommandOption
     {
-        public static Dictionary<Type, ApplicationCommandOptionType> TypeDictionary =
-            new Dictionary<Type, ApplicationCommandOptionType>()
+        public static ReadOnlyDictionary<Type, ApplicationCommandOptionType> TypeDictionary =
+            new(new Dictionary<Type, ApplicationCommandOptionType>()
             {
                 [typeof(long)] = ApplicationCommandOptionType.Integer,
                 [typeof(double)] = ApplicationCommandOptionType.Number,
@@ -13,7 +16,7 @@ namespace Model.Discord
                 [typeof(string)] = ApplicationCommandOptionType.String,
                 [typeof(IUser)] = ApplicationCommandOptionType.User,
                 [typeof(IChannel)] = ApplicationCommandOptionType.Channel
-            };
+            });
 
         public string Name { get; }
 

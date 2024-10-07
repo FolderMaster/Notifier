@@ -1,4 +1,6 @@
-﻿namespace Model
+﻿using Model.Technical;
+
+namespace Model.Senders.Bots
 {
     public abstract class BotCommandHelper
     {

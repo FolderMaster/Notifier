@@ -1,4 +1,7 @@
-﻿namespace Model.Discord
+﻿using Model.Senders;
+using Model.Senders.Bots;
+
+namespace Model.Discord.Commands
 {
     public class DiscordCommandEventArgs : CommandEventArgs
     {

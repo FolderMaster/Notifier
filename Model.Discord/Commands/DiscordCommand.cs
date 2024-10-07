@@ -1,4 +1,6 @@
-﻿namespace Model.Discord
+﻿using Model.Senders.Bots;
+
+namespace Model.Discord.Commands
 {
     public class DiscordCommand : ICommand
     {
