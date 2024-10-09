@@ -4,9 +4,9 @@ namespace Model.Discord.Commands
 {
     public class DiscordCommand : ICommand
     {
-        public string Name { get; }
+        public string Name { get; private set; }
 
-        public string Description { get; }
+        public string Description { get; private set; }
 
         public IEnumerable<DiscordCommandOption> Options { get; }
 

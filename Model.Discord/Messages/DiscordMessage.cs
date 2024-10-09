@@ -4,9 +4,9 @@ namespace Model.Discord.Messages
 {
     public class DiscordMessage : IMessage
     {
-        public object Content { get; }
+        public object Content { get; set; }
 
-        public DiscordEmbed? Embed { get; }
+        public DiscordEmbed? Embed { get; set; }
 
         public DiscordMessage(object content, DiscordEmbed? embed = null)
         {

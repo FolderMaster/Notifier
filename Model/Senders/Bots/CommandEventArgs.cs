@@ -1,14 +1,12 @@
-﻿using Model.Senders;
-
-namespace Model.Senders.Bots
+﻿namespace Model.Senders.Bots
 {
     public class CommandEventArgs
     {
-        public ICommand Command { get; }
+        public ICommand Command { get; private set; }
 
-        public IUser User { get; }
+        public IUser User { get; private set; }
 
-        public IChannel Channel { get; }
+        public IChannel Channel { get; private set; }
 
         public CommandEventArgs(ICommand command, IUser user, IChannel channel)
         {

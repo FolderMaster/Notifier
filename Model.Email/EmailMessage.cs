@@ -8,7 +8,7 @@ namespace Model.Email
 
         public string? Subject { get; }
 
-        public EmailMessage(object content, string? subject)
+        public EmailMessage(object content, string? subject = null)
         {
             Content = content;
             Subject = subject;

@@ -2,7 +2,7 @@
 {
     public class LogEventArgs : EventArgs
     {
-        public object Content { get; }
+        public object Content { get; private set; }
 
         public LogEventArgs(object content) => Content = content;
     }

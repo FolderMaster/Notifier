@@ -18,13 +18,13 @@ namespace Model.Discord.Commands
                 [typeof(IChannel)] = ApplicationCommandOptionType.Channel
             });
 
-        public string Name { get; }
+        public string Name { get; private set; }
 
-        public string Description { get; }
+        public string Description { get; private set; }
 
-        public bool IsRequired { get; }
+        public bool IsRequired { get; private set; }
 
-        public Type Type { get; }
+        public Type Type { get; private set; }
 
         public DiscordCommandOption(string name, string description,
             Type type, bool isRequired = false)

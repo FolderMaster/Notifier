@@ -7,7 +7,7 @@ namespace Model.Discord.Commands
     {
         private readonly SendMessageDelegate _sendMessage;
 
-        public IDictionary<string, object> Options { get; }
+        public IDictionary<string, object> Options { get; private set; }
 
         public DiscordCommandEventArgs(ICommand command, IUser user,
             IChannel channel, IDictionary<string, object> options,

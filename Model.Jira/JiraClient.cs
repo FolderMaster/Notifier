@@ -31,5 +31,16 @@ namespace Model.Jira
                 return Task.FromResult(false);
             }
         }
+
+        public Task<IPagedQueryResult<Issue>> GetIssuesFromJql(string jql,
+            int? maxIssues = null) => _jiraClient.Issues.GetIssuesFromJqlAsync(jql, maxIssues);
+
+        public Task<IDictionary<string, Issue>> GetIssues(IEnumerable<string> issueKeys) =>
+            _jiraClient.Issues.GetIssuesAsync(issueKeys);
+
+        public Task<Issue> GetIssue(string issueKey) => _jiraClient.Issues.GetIssueAsync(issueKey);
+
+        public string CreateLink(IJiraEntity jiraEntity) =>
+            $"{_jiraClient.Url}browse/{jiraEntity.Id}";
     }
 }

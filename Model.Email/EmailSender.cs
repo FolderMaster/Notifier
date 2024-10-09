@@ -1,4 +1,5 @@
 ﻿using System.Net.Mail;
+
 using Model.Senders;
 
 namespace Model.Email
@@ -6,6 +7,9 @@ namespace Model.Email
     public class EmailSender : ISender
     {
         private SmtpClient _client;
+
+        public EmailMessage CheckUserMessage { get; set; } =
+            new EmailMessage("Thanks for registration!", "Registration!");
 
         public EmailSender(string? host, int port)
         {
@@ -15,12 +19,9 @@ namespace Model.Email
         public async Task<bool> CheckUserId(object userId)
         {
             ArgumentNullException.ThrowIfNull(userId, nameof(userId));
-
             try
             {
-                await SendMessage(new EmailMessage("Thanks for registration!", "Registration!"),
-                    new EmailUser((string)userId));
-
+                await SendMessage(CheckUserMessage, new EmailUser((string)userId));
                 return true;
             }
             catch
