@@ -16,7 +16,7 @@ namespace Model.Jira.Violations
             ReloadRules();
         }
 
-        public async IAsyncEnumerable<JiraViolation> FindViolators()
+        public async IAsyncEnumerable<JiraViolation> FindViolations()
         {
             foreach (var issueRulesGroup in _issueRulesGroups)
             {
@@ -25,7 +25,7 @@ namespace Model.Jira.Violations
                 {
                     foreach (var issueRule in issueRulesGroup.Value)
                     {
-                        await foreach (var violator in issueRule.FindViolators(issue, _jiraClient))
+                        await foreach (var violator in issueRule.FindViolators(issue))
                         {
                             yield return new JiraViolation(issueRule, violator, issue);
                         }

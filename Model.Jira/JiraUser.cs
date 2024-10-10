@@ -2,10 +2,10 @@
 {
     public class JiraUser : IUser
     {
-        private readonly string _id;
+        private readonly string _username;
 
-        public object Id => _id;
+        public object Id => _username;
 
-        public JiraUser(string id) => _id = id;
+        public JiraUser(string username) => _username = username;
     }
 }

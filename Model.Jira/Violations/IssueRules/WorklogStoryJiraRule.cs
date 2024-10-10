@@ -4,21 +4,25 @@ namespace Model.Jira.Violations.IssueRules
 {
     public class WorklogStoryJiraRule : IIssueJiraRule
     {
-        public string Jql => "issuetype = Story";
+        public string Jql => "type = story AND timespent > 0 AND worklogDate > '2024/10/01'";
 
         public string Description => "";
 
-        public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue, JiraClient client)
+        public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue)
         {
-            var result = new List<string>();
             var worklogs = await issue.GetWorklogsAsync();
+            var usernames = new List<string>();
             foreach (var worklog in worklogs)
             {
-                if (worklog.TimeSpentInSeconds != 0)
+                var username = worklog.AuthorUser.Username;
+                if (worklog.TimeSpentInSeconds > 0 && !usernames.Contains(username))
                 {
-                    yield return new JiraUser(worklog.AuthorUser.AccountId);
+                    usernames.Add(username);
+                    yield return new JiraUser(username);
                 }
             }
         }
+
+        public override string ToString() => "WorklogStoryJiraRule";
     }
 }

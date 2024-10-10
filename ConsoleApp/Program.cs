@@ -10,6 +10,8 @@ using Model.Jira;
 
 using ConsoleApp.Settings;
 using ConsoleApp.Data;
+using Model.Jira.Violations;
+using Model.Jira.Violations.IssueRules;
 
 var configuration = new ConfigurationBuilder().AddJsonFile("settings.json").Build();
 var settings = configuration.Get<Settings>();
@@ -27,7 +29,15 @@ for (var i = 0; i < dataBaseContext.UserData.Count; i++)
 }
 
 //var emailSender = new EmailSender(settings.Email.Url, settings.Email.Port);
-//var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password);
+var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password);
+await jiraClient.DisplayFields();
+var violationTracker = new JiraViolationTracker(jiraClient);
+await foreach (var violation in violationTracker.FindViolations())
+{
+    Console.WriteLine($"{(violation.Rule is ClosedStoryJiraRule ? "#  " : "")}" +
+        $"{violation.Issue.JiraIdentifier}, {violation.User.Id}, {violation.Rule}");
+}
+
 var discordBot = new DiscordBot(settings.Discord.Token, settings.Discord.Proxy?.GetProxy());
 discordBot.Log += Bot_Log;
 //discordBot.MessageReceived += Bot_MessageReceived;

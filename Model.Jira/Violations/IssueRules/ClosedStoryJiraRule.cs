@@ -4,17 +4,16 @@ namespace Model.Jira.Violations.IssueRules
 {
     public class ClosedStoryJiraRule : IIssueJiraRule
     {
-        public string Jql => "issuetype = Story AND status = Closed";
+        public string Jql => "type = Story AND status = Closed";
 
         public string Description => "";
 
-        public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue, JiraClient client)
+        public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue)
         {
-            var subtaskIds = issue.GetCustomField("Subtasks");
-            var subtasks = await client.GetIssues(subtaskIds);
-            foreach (var subtask in subtasks.Values)
+            var subtasks = await issue.GetSubTasksAsync();
+            foreach (var subtask in subtasks)
             {
-                if (!subtask.CheckStatus("Closed"))
+                if (subtask.Type.Name != "Closed")
                 {
                     var changeLogs = subtask.GetChangeLogsAsync().Result;
                     changeLogs = changeLogs.Reverse();
@@ -22,11 +21,13 @@ namespace Model.Jira.Violations.IssueRules
                     {
                         if (changeLog.GetToValueField("Status") == "Closed")
                         {
-                            yield return new JiraUser(changeLog.Author.AccountId);
+                            yield return new JiraUser(changeLog.Author.Username);
                         }
                     }
                 }
             }
         }
+
+        public override string ToString() => "ClosedStoryJiraRule";
     }
 }
