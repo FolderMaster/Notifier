@@ -26,9 +26,15 @@ for (var i = 0; i < dataBaseContext.UserData.Count; i++)
         $"{userData.JiraId}\t{userData.EmailAddress}");
 }
 
-//var emailSender = new EmailSender(settings.Email.Url, settings.Email.Port);
+/**var emailSender = new EmailSender()
+{
+    Url = settings.Email.Url,
+    Port = settings.Email.Port,
+    Email = settings.Email.Email,
+    Name = settings.Email.Name,
+};**/
 //var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password);
-var discordBot = new DiscordBot(settings.Discord.Token, settings.Discord.Proxy?.GetProxy());
+var discordBot = new DiscordBot(settings.Discord.Token, settings.Discord.Proxy?.CreateProxy());
 discordBot.Log += Bot_Log;
 //discordBot.MessageReceived += Bot_MessageReceived;
 

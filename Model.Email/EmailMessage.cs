@@ -1,4 +1,6 @@
-﻿using Model.Senders;
+﻿using MimeKit;
+
+using Model.Senders;
 
 namespace Model.Email
 {
@@ -12,6 +14,19 @@ namespace Model.Email
         {
             Content = content;
             Subject = subject;
+        }
+
+        public MimeMessage CreateMimeMessage()
+        {
+            var result = new MimeMessage()
+            {
+                Subject = Subject,
+                Body = new TextPart("plain")
+                {
+                    Text = Content.ToString()
+                }
+            };
+            return result;
         }
     }
 }

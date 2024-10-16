@@ -1,20 +1,21 @@
-﻿using System.Net.Mail;
+﻿using MailKit.Net.Smtp;
+using MimeKit;
 
 using Model.Senders;
 
 namespace Model.Email
 {
-    public class EmailSender : ISender
+    public class EmailSender : IMultiSender
     {
-        private SmtpClient _client;
+        public string Url { get; set; }
 
-        public EmailMessage CheckUserMessage { get; set; } =
-            new EmailMessage("Thanks for registration!", "Registration!");
+        public int Port { get; set; }
 
-        public EmailSender(string? host, int port)
-        {
-            _client = new SmtpClient(host, port);
-        }
+        public string Name { get; set; }
+
+        public string Email { get; set; }
+
+        public IMessage? CheckUserMessage { get; set; }
 
         public async Task<bool> CheckUserId(object userId)
         {
@@ -32,20 +33,43 @@ namespace Model.Email
 
         public async Task SendMessage(IMessage message, IUser user)
         {
-            ArgumentNullException.ThrowIfNull(message, nameof(message));
             ArgumentNullException.ThrowIfNull(user, nameof(user));
 
-            var mailMessage = new MailMessage()
+            await SendMessage(message, new IUser[] { user });
+        }
+
+        public async Task SendMessage(IMessage message, IEnumerable<IUser> users)
+        {
+            ArgumentNullException.ThrowIfNull(message, nameof(message));
+            ArgumentNullException.ThrowIfNull(users, nameof(users));
+
+            MimeMessage mimeMessage;
+            if (message is EmailMessage emailMessage)
             {
-                Body = message.Content.ToString()
-            };
-            mailMessage.To.Add(user.Id.ToString());
-            if (message is EmailMessage messageEmail)
+                mimeMessage = emailMessage.CreateMimeMessage();
+            }
+            else
             {
-                mailMessage.Subject = messageEmail.Subject;
+                mimeMessage = new MimeMessage()
+                {
+                    Body = new TextPart("plain")
+                    {
+                        Text = message.Content.ToString()
+                    }
+                };
+            }
+            mimeMessage.From.Add(new MailboxAddress(Name, Email));
+            foreach (var user in users)
+            {
+                mimeMessage.To.Add(MailboxAddress.Parse(user.Id.ToString()));
             }
 
-            await _client.SendMailAsync(mailMessage);
+            using (var client = new SmtpClient())
+            {
+                client.Connect(Url, Port);
+                await client.SendAsync(mimeMessage);
+                client.Disconnect(true);
+            }
         }
     }
 }

@@ -6,16 +6,9 @@ namespace ConsoleApp.Settings
     {
         public string Url { get; set; }
 
-        public Credentials? Credentials { get; set; }
+        public CredentialsSettings? Credentials { get; set; }
 
-        public IWebProxy GetProxy()
-        {
-            if(Credentials != null)
-            {
-                var credentials = new NetworkCredential(Credentials.User, Credentials.Password);
-                return new WebProxy(Url, false, null, credentials);
-            }
-            return new WebProxy(Url, false, null);
-        }
+        public IWebProxy CreateProxy() =>
+            new WebProxy(Url, false, null, Credentials?.CreateCredentials());
     }
 }

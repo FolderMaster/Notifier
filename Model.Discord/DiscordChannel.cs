@@ -4,9 +4,9 @@ namespace Model.Discord
 {
     public class DiscordChannel : IChannel
     {
-        public object Id { get; }
+        public object Id { get; private set; }
 
-        public bool IsPerson { get; }
+        public bool IsPerson { get; private set; }
 
         public DiscordChannel(ulong id, bool isPerson)
         {
