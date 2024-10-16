@@ -1,22 +1,18 @@
-﻿using System.Reflection;
-
-using Model.Jira.Violations.IssueRules;
-
-namespace Model.Jira.Violations
+﻿namespace Model.Jira.Violations
 {
     public class JiraViolationTracker
     {
-        private Dictionary<string, IEnumerable<IIssueJiraRule>> _issueRulesGroups;
+        private Dictionary<string, IEnumerable<JiraRule>> _issueRulesGroups;
 
         private readonly JiraClient _client;
 
-        public JiraViolationTracker(JiraClient client, IEnumerable<IIssueJiraRule>? rules = null)
+        public JiraViolationTracker(JiraClient client, IEnumerable<JiraRule> rules)
         {
             _client = client;
             ReloadRules(rules);
         }
 
-        public async IAsyncEnumerable<JiraViolation> FindViolations()
+        public async Task FindViolations()
         {
             foreach (var issueRulesGroup in _issueRulesGroups)
             {
@@ -25,19 +21,21 @@ namespace Model.Jira.Violations
                 {
                     foreach (var issueRule in issueRulesGroup.Value)
                     {
-                        await foreach (var violator in issueRule.FindViolators(issue))
+                        await foreach (var violator in issueRule.Extraction.FindViolators(issue))
                         {
-                            yield return new JiraViolation(issueRule, violator, issue);
+                            await issueRule.Executor.Execute(new JiraViolation(violator,
+                                new JiraIssue(issue.JiraIdentifier)));
                         }
                     }
                 }
             }
         }
 
-        public void ReloadRules(IEnumerable<IIssueJiraRule>? rules = null)
+        public void ReloadRules(IEnumerable<JiraRule> rules)
         {
             ArgumentNullException.ThrowIfNull(nameof(rules));
-            _issueRulesGroups = rules.GroupBy(r => r.Jql).
+
+            _issueRulesGroups = rules.GroupBy(r => r.Extraction.Jql).
                 ToDictionary(g => g.Key, g => g.AsEnumerable());
         }
     }

@@ -1,8 +1,8 @@
 ﻿using Atlassian.Jira;
 
-namespace Model.Jira.Violations.IssueRules
+namespace Model.Jira.Violations
 {
-    public interface IIssueJiraRule
+    public interface IJiraRuleExtraction
     {
         public string Jql { get; }
 

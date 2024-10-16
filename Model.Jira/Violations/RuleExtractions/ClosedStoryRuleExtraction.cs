@@ -1,8 +1,8 @@
 ﻿using Atlassian.Jira;
 
-namespace Model.Jira.Violations.IssueRules
+namespace Model.Jira.Violations.RuleExtractions
 {
-    public class ClosedStoryJiraRule : IIssueJiraRule
+    public class ClosedStoryRuleExtraction : IJiraRuleExtraction
     {
         public string Jql => "type = Story AND status = Closed";
 
@@ -19,8 +19,7 @@ namespace Model.Jira.Violations.IssueRules
                     {
                         if (changeLog.GetToValueField("Status") == "Closed")
                         {
-                            yield return new JiraUser(changeLog.Author.Username,
-                                changeLog.Author.Email);
+                            yield return new JiraUser(changeLog.Author);
                         }
                     }
                 }

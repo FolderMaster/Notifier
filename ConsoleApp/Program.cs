@@ -6,7 +6,7 @@ using Model.Discord.Messages;
 using Model.Email;
 using Model.Jira;
 using Model.Jira.Violations;
-using Model.Jira.Violations.IssueRules;
+using Model.Jira.Violations.RuleExtractions;
 
 using ConsoleApp;
 using ConsoleApp.Settings;
@@ -64,8 +64,6 @@ discordBot.Start().GetAwaiter().GetResult();
     Console.WriteLine(content);
     return Task.CompletedTask;
 }**/
-
-
 
 async Task Bot_Ready(object sender, EventArgs args)
 {
@@ -233,10 +231,3 @@ bool SendMessageUser(int userIndex, string messageContent)
     emailTask.Wait();**/
     return true /** discordTask.IsCompletedSuccessfully **/ /** && emailTask.IsCompletedSuccessfully**/;
 }
-
-public class Example
-{
-    public object StartDate { get; set; }
-
-    public DateTime EndDate { get; set; }
-} 

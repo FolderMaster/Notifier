@@ -1,8 +1,8 @@
 ﻿using Atlassian.Jira;
 
-namespace Model.Jira.Violations.IssueRules
+namespace Model.Jira.Violations.RuleExtractions
 {
-    public class VotesStoryJiraRule : IIssueJiraRule
+    public class VotesStoryRuleExtraction : IJiraRuleExtraction
     {
         public string Jql => "type = Story";
 
@@ -20,7 +20,7 @@ namespace Model.Jira.Violations.IssueRules
                     !username.Contains(username))
                 {
                     usernames.Add(username);
-                    yield return new JiraUser(username, changeLog.Author.Email);
+                    yield return new JiraUser(changeLog.Author);
                 }
             }
         }

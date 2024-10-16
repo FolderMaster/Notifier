@@ -1,23 +1,22 @@
-﻿using Model.Jira.Violations.IssueRules;
-
-using ConsoleApp.Settings;
+﻿using ConsoleApp.Settings;
+using Model.Jira.Violations;
 
 namespace ConsoleApp
 {
     public static class ModuleConfigurator
     {
-        public static IEnumerable<IIssueJiraRule> CreateModules
+        public static IEnumerable<IJiraRuleExtraction> CreateModules
             (IEnumerable<ModuleSettings> settingsSet)
         {
             ArgumentNullException.ThrowIfNull(nameof(settingsSet));
 
-            var result = new List<IIssueJiraRule>();
+            var result = new List<IJiraRuleExtraction>();
             foreach (var settings in settingsSet)
             {
                 if (settings.Enabled != false)
                 {
                     var type = Type.GetType(settings.Name);
-                    var module = Activator.CreateInstance(type) as IIssueJiraRule;
+                    var module = Activator.CreateInstance(type) as IJiraRuleExtraction;
                     if (settings.Properties != null && settings.Properties.Any())
                     {
                         var setProperties =  type.GetProperties().Where

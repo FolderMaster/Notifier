@@ -1,4 +1,6 @@
-﻿namespace Model.Jira
+﻿using User = Atlassian.Jira.JiraUser;
+
+namespace Model.Jira
 {
     public class JiraUser : IUser
     {
@@ -11,5 +13,7 @@
             Id = username;
             Email = email;
         }
+
+        public JiraUser(User user) : this(user.Username, user.Email) { }
     }
 }

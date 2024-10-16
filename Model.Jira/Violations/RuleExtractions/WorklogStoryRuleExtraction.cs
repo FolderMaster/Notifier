@@ -1,8 +1,8 @@
 ﻿using Atlassian.Jira;
 
-namespace Model.Jira.Violations.IssueRules
+namespace Model.Jira.Violations.RuleExtractions
 {
-    public class WorklogStoryJiraRule : IIssueJiraRule
+    public class WorklogStoryRuleExtraction : IJiraRuleExtraction
     {
         public DateTime? StartDate { get; set; }
 
@@ -19,7 +19,7 @@ namespace Model.Jira.Violations.IssueRules
                 if (worklog.TimeSpentInSeconds > 0 && !usernames.Contains(username))
                 {
                     usernames.Add(username);
-                    yield return new JiraUser(username, worklog.AuthorUser.Email);
+                    yield return new JiraUser(worklog.AuthorUser);
                 }
             }
         }
