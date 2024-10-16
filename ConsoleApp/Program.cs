@@ -7,6 +7,8 @@ using Model.Discord.Commands;
 using Model.Discord.Messages;
 using Model.Email;
 using Model.Jira;
+using Model.Jira.Violations;
+using Model.Jira.Violations.IssueRules;
 
 using ConsoleApp.Settings;
 using ConsoleApp.Data;

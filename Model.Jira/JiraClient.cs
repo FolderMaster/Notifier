@@ -42,5 +42,14 @@ namespace Model.Jira
 
         public string CreateLink(IJiraEntity jiraEntity) =>
             $"{_jiraClient.Url}browse/{jiraEntity.Id}";
+
+        public async Task DisplayFields()
+        {
+            var fields = await _jiraClient.Fields.GetCustomFieldsAsync();
+            foreach (var field in fields.OrderBy(f => f.Name))
+            {
+                Console.WriteLine(field.Name);
+            }
+        }
     }
 }
