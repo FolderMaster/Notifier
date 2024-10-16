@@ -6,8 +6,6 @@ namespace Model.Jira.Violations.IssueRules
     {
         public string Jql => "type = Story AND status = Closed";
 
-        public string Description => "";
-
         public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue)
         {
             var subtasks = await issue.GetSubTasksAsync();
@@ -21,13 +19,12 @@ namespace Model.Jira.Violations.IssueRules
                     {
                         if (changeLog.GetToValueField("Status") == "Closed")
                         {
-                            yield return new JiraUser(changeLog.Author.Username);
+                            yield return new JiraUser(changeLog.Author.Username,
+                                changeLog.Author.Email);
                         }
                     }
                 }
             }
         }
-
-        public override string ToString() => "ClosedStoryJiraRule";
     }
 }

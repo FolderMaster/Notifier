@@ -15,5 +15,21 @@
     "Url": "",
     "User": "",
     "Password": ""
-  }
+  },
+  "Modules": [
+    {
+      "Name": "Model.Jira.Violations.IssueRules.WorklogStoryJiraRule, Model.Jira",
+      "Enabled": true,
+      "Properties": {
+        "StartDate": "2020-06-01T12:00:00Z"
+      }
+    },
+    {
+      "Name": "Model.Jira.Violations.IssueRules.ClosedStoryJiraRule, Model.Jira",
+      "Enabled": false
+    },
+    {
+      "Name": "Model.Jira.Violations.IssueRules.VotesStoryJiraRule, Model.Jira"
+    }
+  ]
 }

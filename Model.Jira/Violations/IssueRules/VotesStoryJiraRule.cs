@@ -6,8 +6,6 @@ namespace Model.Jira.Violations.IssueRules
     {
         public string Jql => "type = Story";
 
-        public string Description => "";
-
         public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue)
         {
             var changeLogs = await issue.GetChangeLogsAsync();
@@ -22,11 +20,9 @@ namespace Model.Jira.Violations.IssueRules
                     !username.Contains(username))
                 {
                     usernames.Add(username);
-                    yield return new JiraUser(username);
+                    yield return new JiraUser(username, changeLog.Author.Email);
                 }
             }
         }
-
-        public override string ToString() => "VotesStoryJiraRule";
     }
 }

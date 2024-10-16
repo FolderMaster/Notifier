@@ -1,12 +1,8 @@
-﻿using System.Text.Json;
-
-namespace ConsoleApp.Data
+﻿namespace ConsoleApp.Data
 {
     public class JsonDataBaseContext
     {
         public readonly string _fileName;
-
-        private JsonSerializerOptions _jsonOptions = new() { WriteIndented = true };
 
         public List<UserData> UserData { get; set; }
 
@@ -18,16 +14,16 @@ namespace ConsoleApp.Data
 
         public void Save()
         {
-            var json = JsonSerializer.Serialize(UserData, _jsonOptions);
-            File.WriteAllText(_fileName, json);
+            var json = JsonSerializer.Serialize(UserData);
+            File.WriteAllBytes(_fileName, json);
         }
 
         public void Load()
         {
             if (File.Exists(_fileName))
             {
-                var json = File.ReadAllText(_fileName);
-                var newUserData = JsonSerializer.Deserialize<List<UserData>>(json, _jsonOptions);
+                var json = File.ReadAllBytes(_fileName);
+                var newUserData = JsonSerializer.Deserialize<List<UserData>>(json);
                 UserData = newUserData != null ? newUserData : new List<UserData>();
             }
             else

@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-
-using Model.Technical;
+﻿using Model.Technical;
 using Model.Senders.Bots;
 using Model.Discord;
 using Model.Discord.Commands;
@@ -10,11 +8,13 @@ using Model.Jira;
 using Model.Jira.Violations;
 using Model.Jira.Violations.IssueRules;
 
+using ConsoleApp;
 using ConsoleApp.Settings;
 using ConsoleApp.Data;
 
-var configuration = new ConfigurationBuilder().AddJsonFile("settings.json").Build();
-var settings = configuration.Get<Settings>();
+var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllBytes("settings.json"));
+
+var modules = ModuleConfigurator.CreateModules(settings.Modules);
 
 var dataBaseContext = new JsonDataBaseContext(settings.DataBase.FileName);
 dataBaseContext.Load();
@@ -64,6 +64,8 @@ discordBot.Start().GetAwaiter().GetResult();
     Console.WriteLine(content);
     return Task.CompletedTask;
 }**/
+
+
 
 async Task Bot_Ready(object sender, EventArgs args)
 {
@@ -231,3 +233,10 @@ bool SendMessageUser(int userIndex, string messageContent)
     emailTask.Wait();**/
     return true /** discordTask.IsCompletedSuccessfully **/ /** && emailTask.IsCompletedSuccessfully**/;
 }
+
+public class Example
+{
+    public object StartDate { get; set; }
+
+    public DateTime EndDate { get; set; }
+} 

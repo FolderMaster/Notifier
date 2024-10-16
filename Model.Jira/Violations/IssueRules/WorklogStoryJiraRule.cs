@@ -4,9 +4,10 @@ namespace Model.Jira.Violations.IssueRules
 {
     public class WorklogStoryJiraRule : IIssueJiraRule
     {
-        public string Jql => "type = story AND timespent > 0 AND worklogDate > '2024/10/01'";
+        public DateTime? StartDate { get; set; }
 
-        public string Description => "";
+        public string Jql => $"type = story AND timespent > 0 {(StartDate != null ?
+            $"AND worklogDate > '{StartDate?.ToString("yyyy-MM-dd")}'" : "")}";
 
         public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue)
         {
@@ -18,11 +19,9 @@ namespace Model.Jira.Violations.IssueRules
                 if (worklog.TimeSpentInSeconds > 0 && !usernames.Contains(username))
                 {
                     usernames.Add(username);
-                    yield return new JiraUser(username);
+                    yield return new JiraUser(username, worklog.AuthorUser.Email);
                 }
             }
         }
-
-        public override string ToString() => "WorklogStoryJiraRule";
     }
 }

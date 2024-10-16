@@ -4,6 +4,12 @@
     {
         public object Id { get; private set; }
 
-        public JiraUser(string id) => Id = id;
+        public string? Email { get; private set; }
+
+        public JiraUser(string username, string? email = null)
+        {
+            Id = username;
+            Email = email;
+        }
     }
 }

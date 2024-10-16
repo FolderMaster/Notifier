@@ -8,19 +8,19 @@ namespace Model.Jira.Violations
     {
         private Dictionary<string, IEnumerable<IIssueJiraRule>> _issueRulesGroups;
 
-        private readonly JiraClient _jiraClient;
+        private readonly JiraClient _client;
 
-        public JiraViolationTracker(JiraClient jiraClient)
+        public JiraViolationTracker(JiraClient client, IEnumerable<IIssueJiraRule>? rules = null)
         {
-            _jiraClient = jiraClient;
-            ReloadRules();
+            _client = client;
+            ReloadRules(rules);
         }
 
         public async IAsyncEnumerable<JiraViolation> FindViolations()
         {
             foreach (var issueRulesGroup in _issueRulesGroups)
             {
-                var issues = await _jiraClient.GetIssuesFromJql(issueRulesGroup.Key);
+                var issues = await _client.GetIssuesFromJql(issueRulesGroup.Key);
                 foreach (var issue in issues)
                 {
                     foreach (var issueRule in issueRulesGroup.Value)
@@ -34,15 +34,9 @@ namespace Model.Jira.Violations
             }
         }
 
-        public void ReloadRules()
+        public void ReloadRules(IEnumerable<IIssueJiraRule>? rules = null)
         {
-            var types = Assembly.GetExecutingAssembly().GetTypes().
-                Where(t => !t.IsAbstract && typeof(IIssueJiraRule).IsAssignableFrom(t));
-            var rules = new List<IIssueJiraRule>();
-            foreach (var type in types)
-            {
-                rules.Add(Activator.CreateInstance(type) as IIssueJiraRule);
-            }
+            ArgumentNullException.ThrowIfNull(nameof(rules));
             _issueRulesGroups = rules.GroupBy(r => r.Jql).
                 ToDictionary(g => g.Key, g => g.AsEnumerable());
         }
