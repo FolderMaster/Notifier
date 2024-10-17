@@ -2,8 +2,14 @@
 {
     public class JiraRule
     {
-        public IJiraRuleExtraction Extraction { get; set; }
+        public IJiraRuleExtraction Extraction { get; private set; }
 
-        public IJiraRuleExecutor Executor { get; set; }
+        public IJiraRuleExecutor Executor { get; private set; }
+
+        public JiraRule(IJiraRuleExtraction extraction, IJiraRuleExecutor executor)
+        {
+            Extraction = extraction;
+            Executor = executor;
+        }
     }
 }

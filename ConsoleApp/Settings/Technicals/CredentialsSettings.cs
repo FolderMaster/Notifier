@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace ConsoleApp.Settings
+namespace ConsoleApp.Settings.Technicals
 {
     public class CredentialsSettings
     {

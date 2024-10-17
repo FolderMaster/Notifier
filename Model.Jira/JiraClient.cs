@@ -40,8 +40,8 @@ namespace Model.Jira
 
         public Task<Issue> GetIssue(string issueKey) => _jiraClient.Issues.GetIssueAsync(issueKey);
 
-        public string CreateLink(IJiraEntity jiraEntity) =>
-            $"{_jiraClient.Url}browse/{jiraEntity.Id}";
+        public string CreateLink(string key) =>
+            $"{_jiraClient.Url}browse/{key}";
 
         public async Task DisplayFields()
         {

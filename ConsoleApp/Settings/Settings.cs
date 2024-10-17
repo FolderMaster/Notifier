@@ -4,7 +4,7 @@
     {
         public DataBaseSettings DataBase { get; set; }
 
-        public IEnumerable<ModuleSettings> Modules { get; set; }
+        public IEnumerable<RuleSettings> Rules { get; set; }
 
         public DiscordSettings Discord { get; set; }
 

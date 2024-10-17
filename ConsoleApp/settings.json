@@ -16,20 +16,29 @@
     "User": "",
     "Password": ""
   },
-  "Modules": [
+  "Rules": [
     {
-      "Name": "Model.Jira.Violations.IssueRules.WorklogStoryJiraRule, Model.Jira",
       "Enabled": true,
-      "Properties": {
-        "StartDate": "2020-06-01T12:00:00Z"
+      "Extraction": {
+        "$type": "Model.Jira.Violations.RuleExtractions.WorklogStoryRuleExtraction, Model.Jira",
+        "StartDate": "2024-10-01T00:00:00Z"
+      },
+      "Executor": {
+        "$type": "ConsoleApp.StandardJiraRuleExecutor, ConsoleApp",
+        "Message": {
+          "$type": "Model.Email.EmailMessage, Model.Email",
+          "Subject": "Из Jira c любовью"
+        }
       }
     },
     {
-      "Name": "Model.Jira.Violations.IssueRules.ClosedStoryJiraRule, Model.Jira",
-      "Enabled": false
-    },
-    {
-      "Name": "Model.Jira.Violations.IssueRules.VotesStoryJiraRule, Model.Jira"
+      "Enabled": false,
+      "Extraction": {
+        "$type": "Model.Jira.Violations.RuleExtractions.RoughEstimationStoryRuleExtraction, Model.Jira"
+      },
+      "Executor": {
+        "$type": "ConsoleApp.StandardJiraRuleExecutor, ConsoleApp"
+      }
     }
   ]
 }

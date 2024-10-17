@@ -4,9 +4,9 @@ using Model.Senders;
 
 namespace Model.Email
 {
-    public class EmailMessage : IMessage
+    public record EmailMessage : IMessage
     {
-        public object Content { get; }
+        public object Content { get; set; }
 
         public string? Subject { get; }
 

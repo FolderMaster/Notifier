@@ -2,11 +2,11 @@
 
 namespace Model.Jira
 {
-    public class JiraUser : IUser
+    public record JiraUser : IUser
     {
-        public object Id { get; private set; }
+        public object Id { get; init; }
 
-        public string? Email { get; private set; }
+        public string? Email { get; init; }
 
         public JiraUser(string username, string? email = null)
         {

@@ -2,6 +2,6 @@
 {
     public interface IMessage
     {
-        public object Content { get; }
+        public object Content { get; set; }
     }
 }

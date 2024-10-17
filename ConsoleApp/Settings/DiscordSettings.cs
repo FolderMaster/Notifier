@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp.Settings
+﻿using ConsoleApp.Settings.Technicals;
+
+namespace ConsoleApp.Settings
 {
     public class DiscordSettings
     {

@@ -1,6 +1,6 @@
 ﻿namespace Model.Discord.Messages
 {
-    public class DiscordCommandMessage : DiscordMessage
+    public record DiscordCommandMessage : DiscordMessage
     {
         public bool IsEphemeral { get; }
 

@@ -1,9 +1,15 @@
 ﻿namespace Model.Jira
 {
-    public class JiraIssue
+    public record JiraIssue
     {
         public object Id { get; private set; }
 
-        public JiraIssue(string id) => Id = id;
+        public string Link { get; private set; }
+
+        public JiraIssue(string id, string link)
+        {
+            Id = id;
+            Link = link;
+        }
     }
 }

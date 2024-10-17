@@ -6,7 +6,6 @@ using Model.Discord.Messages;
 using Model.Email;
 using Model.Jira;
 using Model.Jira.Violations;
-using Model.Jira.Violations.RuleExtractions;
 
 using ConsoleApp;
 using ConsoleApp.Settings;
@@ -14,9 +13,21 @@ using ConsoleApp.Data;
 
 var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllBytes("settings.json"));
 
-var modules = ModuleConfigurator.CreateModules(settings.Modules);
+var rules = RuleConfigurator.CreateModules(settings.Rules);
+StandardJiraRuleExecutor.Sender = new EmailSender()
+{
+    Url = settings.Email.Url,
+    Port = settings.Email.Port,
+    Email = settings.Email.Email,
+    Name = settings.Email.Name,
+};
 
-var dataBaseContext = new JsonDataBaseContext(settings.DataBase.FileName);
+var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password);
+var violationTracker = new JiraViolationTracker(jiraClient, rules);
+
+await violationTracker.FindViolations();
+
+/**var dataBaseContext = new JsonDataBaseContext(settings.DataBase.FileName);
 dataBaseContext.Load();
 
 Console.WriteLine("Данные пользователей:");
@@ -26,7 +37,7 @@ for (var i = 0; i < dataBaseContext.UserData.Count; i++)
     var userData = dataBaseContext.UserData[i];
     Console.WriteLine($"{i}\t{userData.DiscordId}\t" +
         $"{userData.JiraId}\t{userData.EmailAddress}");
-}
+}**/
 
 /**var emailSender = new EmailSender()
 {
@@ -35,12 +46,12 @@ for (var i = 0; i < dataBaseContext.UserData.Count; i++)
     Email = settings.Email.Email,
     Name = settings.Email.Name,
 };**/
-//var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password);
-var discordBot = new DiscordBot(settings.Discord.Token, settings.Discord.Proxy?.CreateProxy());
-discordBot.Log += Bot_Log;
+
+/**var discordBot = new DiscordBot(settings.Discord.Token, settings.Discord.Proxy?.CreateProxy());
+discordBot.Log += Bot_Log;**/
 //discordBot.MessageReceived += Bot_MessageReceived;
 
-var commandsTasks = new Dictionary<ICommand, DiscordCommandDelegate>();
+/**var commandsTasks = new Dictionary<ICommand, DiscordCommandDelegate>();
 commandsTasks.Add(new DiscordCommand("help", "Describe commands.",
     new List<DiscordCommandOption>()
     { new DiscordCommandOption("command", "Described command.", typeof(string)) }),
@@ -55,7 +66,7 @@ commandsTasks.Add(new DiscordCommand("reg", "Register user.",
 var botCommandHelper = new DiscordBotCommandHelper(discordBot, commandsTasks);
 discordBot.Ready += Bot_Ready;
 
-discordBot.Start().GetAwaiter().GetResult();
+discordBot.Start().GetAwaiter().GetResult();**/
 
 /**Task Bot_MessageReceived(object sender, MessageEventArgs args)
 {
@@ -65,7 +76,7 @@ discordBot.Start().GetAwaiter().GetResult();
     return Task.CompletedTask;
 }**/
 
-async Task Bot_Ready(object sender, EventArgs args)
+/**async Task Bot_Ready(object sender, EventArgs args)
 {
     while (true)
     {
@@ -175,16 +186,16 @@ async Task ExecuteRegCommand(DiscordCommandEventArgs args)
 
 bool RegisterUser(ulong discordId, string jiraId, string? emailAddress)
 {
-    /**var isJiraChecked = jiraClient.CheckUserId(jiraId).Result;
-    var isEmailChecked = true;
-    if(emailAddress != null)
-    {
-        isEmailChecked = emailSender.CheckUserId(jiraId).Result;
-    }
-    if (!isJiraChecked || !isEmailChecked)
-    {
-        return false;
-    }**/
+    //var isJiraChecked = jiraClient.CheckUserId(jiraId).Result;
+    //var isEmailChecked = true;
+    //if(emailAddress != null)
+    //{
+    //    isEmailChecked = emailSender.CheckUserId(jiraId).Result;
+    //}
+    //if (!isJiraChecked || !isEmailChecked)
+    //{
+    //    return false;
+    //}
     var userData = dataBaseContext.UserData.FirstOrDefault((u) => u.DiscordId == discordId);
     if (userData == null)
     {
@@ -226,8 +237,10 @@ bool SendMessageUser(int userIndex, string messageContent)
     var discordTask = discordBot.SendMessage(new DiscordMessage(messageContent),
         new DiscordUser(userData.DiscordId, false));
     discordTask.Wait();
-    /**var emailTask = emailSender.SendMessage(new EmailMessage(messageContent),
-        new EmailUser(userData.EmailAddress));
-    emailTask.Wait();**/
-    return true /** discordTask.IsCompletedSuccessfully **/ /** && emailTask.IsCompletedSuccessfully**/;
-}
+    //var emailTask = emailSender.SendMessage(new EmailMessage(messageContent),
+    //    new EmailUser(userData.EmailAddress));
+    //emailTask.Wait();
+    return true
+    // discordTask.IsCompletedSuccessfully **/ /** && emailTask.IsCompletedSuccessfully
+    ;
+}**/

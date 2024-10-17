@@ -1,6 +1,6 @@
 ﻿namespace Model.Discord
 {
-    public class DiscordUser : IUser
+    public record DiscordUser : IUser
     {
         public object Id { get; private set; }
 

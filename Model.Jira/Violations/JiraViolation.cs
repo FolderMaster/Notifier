@@ -1,8 +1,6 @@
-﻿using Model.Jira.Violations.RuleExtractions;
-
-namespace Model.Jira.Violations
+﻿namespace Model.Jira.Violations
 {
-    public class JiraViolation
+    public record JiraViolation
     {
         public JiraUser User { get; private set; }
 

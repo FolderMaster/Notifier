@@ -2,7 +2,7 @@
 
 namespace Model.Discord
 {
-    public class DiscordChannel : IChannel
+    public record DiscordChannel : IChannel
     {
         public object Id { get; private set; }
 

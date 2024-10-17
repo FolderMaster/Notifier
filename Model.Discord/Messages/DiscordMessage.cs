@@ -2,7 +2,7 @@
 
 namespace Model.Discord.Messages
 {
-    public class DiscordMessage : IMessage
+    public record DiscordMessage : IMessage
     {
         public object Content { get; set; }
 

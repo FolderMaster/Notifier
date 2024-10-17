@@ -1,8 +1,8 @@
 ﻿namespace Model.Email
 {
-    public class EmailUser : IUser
+    public record EmailUser : IUser
     {
-        public object Id { get; private set; }
+        public object Id { get; set; }
 
         public EmailUser(string address) => Id = address;
     }
