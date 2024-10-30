@@ -39,17 +39,5 @@ namespace Model.Jira
             _jiraClient.Issues.GetIssuesAsync(issueKeys);
 
         public Task<Issue> GetIssue(string issueKey) => _jiraClient.Issues.GetIssueAsync(issueKey);
-
-        public string CreateLink(string key) =>
-            $"{_jiraClient.Url}browse/{key}";
-
-        public async Task DisplayFields()
-        {
-            var fields = await _jiraClient.Fields.GetCustomFieldsAsync();
-            foreach (var field in fields.OrderBy(f => f.Name))
-            {
-                Console.WriteLine(field.Name);
-            }
-        }
     }
 }

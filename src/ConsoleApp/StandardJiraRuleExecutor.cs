@@ -1,5 +1,4 @@
-﻿using Model;
-using Model.Email;
+﻿using Model.Email;
 using Model.Jira.Violations;
 using Model.Senders;
 
@@ -7,9 +6,15 @@ namespace ConsoleApp
 {
     public class StandardJiraRuleExecutor : IJiraRuleExecutor
     {
-        public static ISender Sender { get; set; }
+        private readonly ISender _sender;
 
-        public IMessage Message { get; set; }
+        private readonly IMessage _message;
+
+        public StandardJiraRuleExecutor(ISender sender, IMessage message)
+        {
+            _sender = sender;
+            _message = message;
+        }
 
         public async Task Execute(IAsyncEnumerable<JiraViolation> violations)
         {
@@ -29,11 +34,11 @@ namespace ConsoleApp
                 {
                     content += $"{violation.Issue.Link}\n";
                 }
-                Message.Content = content;
+                _message.Content = content;
                 // !!!!!!!!!!!!!!!!!!!!!!!
                 if (violator.Email == "")
                 {
-                    await Sender.SendMessage(Message, new EmailUser(violator.Email));
+                    await _sender.SendMessage(_message, new EmailUser(violator.Email));
                 }
             }
         }

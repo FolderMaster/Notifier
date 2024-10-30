@@ -9,18 +9,10 @@ using Model.Jira.Violations;
 
 using ConsoleApp;
 using ConsoleApp.Settings;
-using ConsoleApp.Data;
 
 var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllBytes("settings.json"));
 
 var rules = RuleConfigurator.CreateModules(settings.Rules);
-StandardJiraRuleExecutor.Sender = new EmailSender()
-{
-    Url = settings.Email.Url,
-    Port = settings.Email.Port,
-    Email = settings.Email.Email,
-    Name = settings.Email.Name,
-};
 
 var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password);
 var violationTracker = new JiraViolationTracker(jiraClient, rules);

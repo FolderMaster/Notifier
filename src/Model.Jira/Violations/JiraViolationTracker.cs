@@ -1,10 +1,8 @@
-﻿using Atlassian.Jira;
-
-namespace Model.Jira.Violations
+﻿namespace Model.Jira.Violations
 {
     public class JiraViolationTracker
     {
-        private Dictionary<string, IEnumerable<JiraRule>> _issueRulesGroups;
+        private Dictionary<string, IEnumerable<IJiraRule>> _issueRulesGroups;
 
         private readonly JiraClient _client;
 
@@ -21,30 +19,17 @@ namespace Model.Jira.Violations
                 var issues = await _client.GetIssuesFromJql(issueRulesGroup.Key);
                 foreach (var rule in issueRulesGroup.Value)
                 {
-                    await rule.Executor.Execute(GetViolationsForRule(issues, rule));
+                    await rule.CheckIssues(issues);
                 }
             }
         }
 
-        public void ReloadRules(IEnumerable<JiraRule> rules)
+        public void ReloadRules(IEnumerable<IJiraRule> rules)
         {
             ArgumentNullException.ThrowIfNull(nameof(rules));
 
-            _issueRulesGroups = rules.GroupBy(r => r.Extraction.Jql).
+            _issueRulesGroups = rules.GroupBy(r => r.Jql).
                 ToDictionary(g => g.Key, g => g.AsEnumerable());
-        }
-
-        private async IAsyncEnumerable<JiraViolation> GetViolationsForRule
-            (IPagedQueryResult<Issue> issues, JiraRule rule)
-        {
-            foreach (var issue in issues)
-            {
-                await foreach (var violator in rule.Extraction.FindViolators(issue))
-                {
-                    yield return new JiraViolation(violator, new JiraIssue(issue.JiraIdentifier,
-                        _client.CreateLink(issue.Key.ToString())));
-                }
-            }
         }
     }
 }
