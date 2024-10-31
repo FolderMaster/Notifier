@@ -1,141 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0" version="24.8.3" pages="2">
-  <diagram id="vakS7NAxDZcy6g4z0lDy" name="Sequence">
-    <mxGraphModel dx="1430" dy="761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="gVNF3NikwQE1ZalJSSpd-6" value="&lt;div&gt;JiraRuleExtration&lt;/div&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="450" y="20" width="120" height="540" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-9" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;fillColor=default;" vertex="1" parent="gVNF3NikwQE1ZalJSSpd-6">
-          <mxGeometry x="55" y="300" width="10" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="gVNF3NikwQE1ZalJSSpd-1" value="JiraClient" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="200" y="20" width="100" height="540" as="geometry" />
-        </mxCell>
-        <mxCell id="gVNF3NikwQE1ZalJSSpd-3" value="JiraServer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="340" y="20" width="100" height="540" as="geometry" />
-        </mxCell>
-        <mxCell id="gVNF3NikwQE1ZalJSSpd-7" value="JiraRuleExecutor" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="580" y="20" width="140" height="540" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-20" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;fillColor=default;" vertex="1" parent="gVNF3NikwQE1ZalJSSpd-7">
-          <mxGeometry x="65" y="420" width="10" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="gVNF3NikwQE1ZalJSSpd-9" value="JiraViolationTracker" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
-          <mxGeometry x="10" y="20" width="140" height="540" as="geometry" />
-        </mxCell>
-        <mxCell id="gVNF3NikwQE1ZalJSSpd-10" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="75" y="160" width="10" height="280" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-1" value="Получить issues из JQL" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0.002;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.964;exitY=0.037;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="gVNF3NikwQE1ZalJSSpd-10" target="gVNF3NikwQE1ZalJSSpd-2">
-          <mxGeometry x="-0.0567" relative="1" as="geometry">
-            <mxPoint x="90" y="170" as="sourcePoint" />
-            <mxPoint x="215" y="170" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="170" y="170" />
-            </Array>
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-4" value="Issues" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;exitX=0.004;exitY=1.001;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.003;entryY=0.357;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="gVNF3NikwQE1ZalJSSpd-2" target="gVNF3NikwQE1ZalJSSpd-10">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="90" y="260" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="160" y="260" />
-              <mxPoint x="190" y="260" />
-            </Array>
-            <mxPoint x="215" y="260" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-2" value="Отправить запрос" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;exitX=1.005;exitY=0.113;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.004;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="gVNF3NikwQE1ZalJSSpd-2" target="gVNF3NikwQE1ZalJSSpd-4">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="250" y="180" as="sourcePoint" />
-            <Array as="points" />
-            <mxPoint x="385" y="180" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-3" value="Ответ сервера" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=horizontal;exitX=-0.003;exitY=1.001;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.003;entryY=0.776;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="gVNF3NikwQE1ZalJSSpd-4" target="gVNF3NikwQE1ZalJSSpd-2">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="265" y="240" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="340" y="240" />
-              <mxPoint x="370" y="240" />
-            </Array>
-            <mxPoint x="395" y="240" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="gVNF3NikwQE1ZalJSSpd-2" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="245" y="170" width="10" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="gVNF3NikwQE1ZalJSSpd-4" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
-          <mxGeometry x="385" y="180" width="10" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-17" value="Получить нарушителей (violators) из issue" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="85" y="320" as="sourcePoint" />
-            <mxPoint x="505" y="320" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="300" y="320" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-31" value="Нарушители (violators)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;exitX=-0.007;exitY=0.997;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="85" y="380" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="410" y="380" />
-              <mxPoint x="440" y="380" />
-            </Array>
-            <mxPoint x="499.9300000000003" y="379.82000000000016" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-32" value="Произведения действий над нарушениями (violations)" style="html=1;verticalAlign=bottom;endArrow=open;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;endFill=0;entryX=0.003;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="DYRL_JZSQu2P8z3fibKQ-20">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="84.99571428571426" y="440" as="sourcePoint" />
-            <mxPoint x="650" y="440" as="targetPoint" />
-            <Array as="points" />
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry y="120" width="690" height="420" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-36" value="loop" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry y="120" width="50" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-38" value="Итерация группы правил (rules) по JQL" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="50" y="120" width="250" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-44" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="10" y="270" width="680" height="380" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-40" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="DYRL_JZSQu2P8z3fibKQ-44">
-          <mxGeometry width="670" height="260" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-42" value="Итерация правил (rules) из группы" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="DYRL_JZSQu2P8z3fibKQ-44">
-          <mxGeometry x="80" width="210" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-41" value="loop" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="DYRL_JZSQu2P8z3fibKQ-44">
-          <mxGeometry width="50" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-45" value="" style="group" vertex="1" connectable="0" parent="DYRL_JZSQu2P8z3fibKQ-44">
-          <mxGeometry x="10" y="120" width="670" height="260" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-46" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="DYRL_JZSQu2P8z3fibKQ-45">
-          <mxGeometry width="650" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-47" value="Итерация нарушений (violations)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="DYRL_JZSQu2P8z3fibKQ-45">
-          <mxGeometry x="70" width="200" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="DYRL_JZSQu2P8z3fibKQ-48" value="loop" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="DYRL_JZSQu2P8z3fibKQ-45">
-          <mxGeometry width="50" height="30" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" modified="2024-10-31T04:49:39.542Z" version="24.2.7" etag="Mqef_15yHraf5tYUGpEf" type="device" pages="2">
   <diagram name="Class" id="c4acf3e9-155e-7222-9cf6-157b1a14988f">
-    <mxGraphModel dx="2074" dy="1104" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+    <mxGraphModel dx="1750" dy="995" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -197,8 +62,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.935;entryY=0.001;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=0;endSize=10;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-28" target="M7qBrIGJbLVV2UQd1HQU-72" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.829;entryY=0.001;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=0;endSize=10;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-28" target="M7qBrIGJbLVV2UQd1HQU-72" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="836" />
+              <mxPoint x="840" y="1380" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-28" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JiraClient&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- jiraClient: Jira&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ jiraClient(url: string, user:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;string&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;, password:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;string&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;checkUserId(userId:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;object&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): Task&amp;lt;bool&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;getIssuesFromJql(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;jql:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;string&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;,&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;maxIssues:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;int?&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;= null):&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Task&amp;lt;Issue[*]&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;createLink(issueKey:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;string&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): string&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
           <mxGeometry x="610" y="716" width="382.5" height="120" as="geometry" />
@@ -206,65 +76,42 @@
         <mxCell id="5d2195bd80daf111-18" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IUser&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getId(): object&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
           <mxGeometry x="230" y="30" width="250" height="93" as="geometry" />
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.839;exitY=1.003;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;endSize=10;exitPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-37" target="M7qBrIGJbLVV2UQd1HQU-128" edge="1">
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.839;exitY=1.003;exitDx=0;exitDy=0;entryX=0.035;entryY=0.002;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;endSize=10;exitPerimeter=0;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-37" target="M7qBrIGJbLVV2UQd1HQU-40" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-37" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JiraUser&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- id: object&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- email: string?&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ jiraUser(username: string, email: string?&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ jiraUser(user: JiraUser&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ get&lt;span style=&quot;background-color: initial;&quot;&gt;Id(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): object&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;getEmail(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): string?&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
           <mxGeometry x="97.50999999999998" y="710" width="240" height="140" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-40" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JiraViolation&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- user: JiraUser&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- issue: JiraIssue&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ jiraViolation(&lt;/span&gt;user: JiraUser&lt;span style=&quot;background-color: initial;&quot;&gt;,&amp;nbsp;&lt;/span&gt;issue: JiraIssue&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getUser&lt;span style=&quot;background-color: initial;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): JiraUser&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;getIssue(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): Jiraissue&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
-          <mxGeometry x="250" y="890" width="440" height="120" as="geometry" />
+          <mxGeometry x="290" y="900" width="260" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-130" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.632;exitY=0.022;exitDx=0;exitDy=0;entryX=0.639;entryY=0.99;entryDx=0;entryDy=0;endArrow=open;endFill=0;endSize=10;dashed=1;entryPerimeter=0;exitPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-59" target="M7qBrIGJbLVV2UQd1HQU-40" edge="1">
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-130" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.862;entryY=1.003;entryDx=0;entryDy=0;endArrow=open;endFill=0;endSize=10;dashed=1;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-59" target="M7qBrIGJbLVV2UQd1HQU-40" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-134" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;endSize=10;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-59" target="M7qBrIGJbLVV2UQd1HQU-56" edge="1">
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-134" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.409;exitY=0.998;exitDx=0;exitDy=0;entryX=0.679;entryY=-0.003;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;endSize=10;exitPerimeter=0;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-59" target="M7qBrIGJbLVV2UQd1HQU-56" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="485" y="1143" />
+              <mxPoint x="540" y="1180" />
+              <mxPoint x="540" y="1180" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-59" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IJiraRuleExecutor&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ execute(violanation&lt;span style=&quot;text-align: center; background-color: initial;&quot;&gt;[*]&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial; text-align: center;&quot;&gt;JiraViolation&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): Task&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
-          <mxGeometry x="345" y="1050" width="295" height="93" as="geometry" />
+          <mxGeometry x="440" y="1047" width="245" height="93" as="geometry" />
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-133" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=open;endFill=0;endSize=10;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-60" target="M7qBrIGJbLVV2UQd1HQU-37" edge="1">
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-133" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.597;exitY=0.001;exitDx=0;exitDy=0;entryX=0.404;entryY=0.997;entryDx=0;entryDy=0;dashed=1;endArrow=open;endFill=0;endSize=10;entryPerimeter=0;exitPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-60" target="M7qBrIGJbLVV2UQd1HQU-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-135" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;endSize=10;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-60" target="M7qBrIGJbLVV2UQd1HQU-56" edge="1">
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-135" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.391;exitY=0.999;exitDx=0;exitDy=0;entryX=0.06;entryY=0.001;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=1;endSize=10;entryPerimeter=0;exitPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-60" target="M7qBrIGJbLVV2UQd1HQU-56" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="289" y="1152" />
-            </Array>
+            <Array as="points" />
           </mxGeometry>
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-60" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IJiraRule&lt;/b&gt;&lt;span style=&quot;background-color: initial; text-align: left;&quot;&gt;&lt;b&gt;Extraction&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getJql(): string&lt;br&gt;+ execute(issue:&amp;nbsp;&lt;span style=&quot;text-align: center;&quot;&gt;I&lt;/span&gt;&lt;span style=&quot;text-align: center;&quot;&gt;ssue&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): JiraUser[*]&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
-          <mxGeometry x="116.26" y="1041.5" width="202.5" height="110" as="geometry" />
+          <mxGeometry x="78.13000000000001" y="895" width="193.75" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.667;exitY=0.011;exitDx=0;exitDy=0;entryX=0.879;entryY=1.011;entryDx=0;entryDy=0;endArrow=open;endFill=0;dashed=1;endSize=10;entryPerimeter=0;exitPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-72" target="M7qBrIGJbLVV2UQd1HQU-59" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="606" y="1380" />
-              <mxPoint x="604" y="1380" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-150" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.195;exitY=-0.002;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=open;endFill=0;endSize=10;exitPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-72" target="M7qBrIGJbLVV2UQd1HQU-60" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="167" y="1380" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-151" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.954;entryY=1.008;entryDx=0;entryDy=0;endArrow=open;endFill=0;dashed=1;endSize=10;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-72" target="M7qBrIGJbLVV2UQd1HQU-40" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="670" y="1380" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-72" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JiraViolationTracker&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- client: JiraClient&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- issueRuleGroups: Dictionary&amp;lt;string, JiraRule[1..*]&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ j&lt;/span&gt;&lt;span style=&quot;text-align: center;&quot;&gt;iraViolationTracker&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;jiraClient:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;JiraClient&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;, rules[*]:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;JiraRule&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;reloadRules(rules[*]: JiraRule)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;getE&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;xecutor(): IJiraRuleExecutor&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- getViolationsForRule(issues[*]: Issue, rule: JiraRule): JiraViolation[*]&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
-          <mxGeometry x="116.26" y="1380" width="733.74" height="140" as="geometry" />
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-72" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JiraViolationTracker&lt;/b&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;- client: JiraClient&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- issueRuleGroups: Dictionary&amp;lt;string, JiraRule[1..*]&amp;gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ j&lt;/span&gt;&lt;span style=&quot;text-align: center;&quot;&gt;iraViolationTracker&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;jiraClient:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;JiraClient&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;, rules[*]:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;JiraRule&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;reloadRules(rules[*]: JiraRule)&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="106.25" y="1370" width="873.74" height="110" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-79" value="*" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="106.25" y="1400" width="20" height="20" as="geometry" />
@@ -298,33 +145,34 @@
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-18" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;EmailUser&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- id: object&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ email(address:&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;string&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getId(): object&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- setId(value:&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;object&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): void&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
           <mxGeometry x="1380" y="405.5" width="150" height="109" as="geometry" />
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=diamondThin;endFill=1;endSize=10;entryX=0.502;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-39" target="M7qBrIGJbLVV2UQd1HQU-40" edge="1">
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=diamondThin;endFill=1;endSize=10;entryX=0.694;entryY=-0.003;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-39" target="M7qBrIGJbLVV2UQd1HQU-40" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="470" y="890" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;dashed=1;endArrow=none;endFill=0;startArrow=open;startFill=0;startSize=10;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-39" edge="1">
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.943;exitY=0.999;exitDx=0;exitDy=0;dashed=1;endArrow=none;endFill=0;startArrow=open;startFill=0;startSize=10;entryX=0.76;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-39" edge="1" target="M7qBrIGJbLVV2UQd1HQU-72">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="760" y="1380" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="527" y="870" />
-              <mxPoint x="760" y="870" />
+              <mxPoint x="570" y="870" />
+              <mxPoint x="770" y="870" />
+              <mxPoint x="770" y="1370" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-39" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JiraIssue&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- id: object&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- link: string&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ jiraIssue(username: string, link: string&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ get&lt;span style=&quot;background-color: initial;&quot;&gt;Id(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): object&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;getLinkl(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): string&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
           <mxGeometry x="360" y="720" width="222.5" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-140" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=0;endSize=10;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-56" target="M7qBrIGJbLVV2UQd1HQU-141" edge="1">
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-140" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.368;entryY=-0.003;entryDx=0;entryDy=0;endArrow=diamondThin;endFill=0;endSize=10;entryPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-56" target="M7qBrIGJbLVV2UQd1HQU-72" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="410" y="1330" />
+              <mxPoint x="428" y="1370" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="M7qBrIGJbLVV2UQd1HQU-56" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JiraRule&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- extraction: IJiraRuleExtraction&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- executor: IJiraRuleExecutor&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ jiraIssue(&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;extraction:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;IJiraRuleExtraction&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;, executor:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;IJiraRuleExecutor&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ get&lt;span style=&quot;background-color: initial;&quot;&gt;Extraction(): IJiraRuleExtraction&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;getE&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;xecutor(): IJiraRuleExecutor&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
-          <mxGeometry x="191.25" y="1210" width="391.25" height="120" as="geometry" />
+        <mxCell id="M7qBrIGJbLVV2UQd1HQU-56" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;JiraRule&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- extraction: IJiraRuleExtraction&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- executor: IJiraRuleExecutor&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;checkIssues(issues&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;[*]&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Issue): Task&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ get&lt;span style=&quot;background-color: initial;&quot;&gt;Jql(): string&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;getViolations():&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;JiraViolation[*]&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" parent="1" vertex="1">
+          <mxGeometry x="116.26" y="1190" width="623.74" height="120" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.539;exitY=-0.037;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=open;endFill=0;dashed=1;endSize=10;exitPerimeter=0;" parent="1" source="M7qBrIGJbLVV2UQd1HQU-1" target="5d2195bd80daf111-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -358,37 +206,37 @@
           <mxGeometry x="440" y="840" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-128" value="1..*" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="298.75" y="860" width="40" height="30" as="geometry" />
+          <mxGeometry x="300" y="870" width="40" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-129" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="268.75" y="850" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-136" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="456.25" y="1143" width="30" height="30" as="geometry" />
+          <mxGeometry x="510" y="1140" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-137" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="490" y="1180" width="30" height="30" as="geometry" />
+          <mxGeometry x="540" y="1160" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-138" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="259.38" y="1150" width="30" height="30" as="geometry" />
+          <mxGeometry x="126.25" y="1005" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-139" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="289.38" y="1180" width="30" height="30" as="geometry" />
+          <mxGeometry x="150" y="1160" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-141" value="0..1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="410" y="1350" width="42.5" height="30" as="geometry" />
+          <mxGeometry x="427.5" y="1310" width="42.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-142" value="*" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="371.88" y="1330" width="30" height="30" as="geometry" />
+          <mxGeometry x="397.5" y="1340" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-144" value="0..1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="810" y="1350" width="40" height="30" as="geometry" />
+          <mxGeometry x="840" y="1340" width="40" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-145" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="800" y="836" width="30" height="30" as="geometry" />
+          <mxGeometry x="810" y="840" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-146" value="1..*" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="472.5" y="860" width="40" height="30" as="geometry" />
+          <mxGeometry x="470" y="860" width="40" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-155" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=block;startFill=0;endArrow=none;endFill=0;startSize=10;dashed=1;entryX=0.142;entryY=-0.01;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5d2195bd80daf111-18" target="M7qBrIGJbLVV2UQd1HQU-37" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -402,6 +250,173 @@
         </mxCell>
         <mxCell id="M7qBrIGJbLVV2UQd1HQU-156" value="Model.Jira" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="50" y="651.5" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GE5FTfMtyfxrGbYJWKmK-1" value="&lt;p style=&quot;margin: 4px 0px 0px;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IJiraRule&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;text-align: left; margin: 0px 0px 0px 4px;&quot;&gt;+ checkIssues(issues&lt;span style=&quot;background-color: initial;&quot;&gt;[*]&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Issue): Task&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left; margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ getJql(): string&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=center;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="190" y="1038.5" width="201.25" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="GE5FTfMtyfxrGbYJWKmK-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.534;entryY=0.996;entryDx=0;entryDy=0;endArrow=block;endFill=0;dashed=1;endSize=10;exitX=0.29;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="M7qBrIGJbLVV2UQd1HQU-56" target="GE5FTfMtyfxrGbYJWKmK-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1184" y="1336" as="sourcePoint" />
+            <mxPoint x="320" y="1143" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="297" y="1180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GE5FTfMtyfxrGbYJWKmK-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.562;exitY=0.003;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=open;endFill=0;endSize=10;dashed=1;exitPerimeter=0;" edge="1" parent="1" source="M7qBrIGJbLVV2UQd1HQU-56" target="M7qBrIGJbLVV2UQd1HQU-40">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="524" y="1061" as="sourcePoint" />
+            <mxPoint x="524" y="1020" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="420" y="1100" />
+              <mxPoint x="420" y="1100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GE5FTfMtyfxrGbYJWKmK-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.695;exitY=1.001;exitDx=0;exitDy=0;dashed=1;endArrow=none;endFill=0;startArrow=open;startFill=0;startSize=10;exitPerimeter=0;entryX=0.967;entryY=-0.001;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="M7qBrIGJbLVV2UQd1HQU-39" target="M7qBrIGJbLVV2UQd1HQU-56">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="720" y="1190" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="515" y="890" />
+              <mxPoint x="719" y="890" />
+            </Array>
+            <mxPoint x="580" y="850" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="vakS7NAxDZcy6g4z0lDy" name="Sequence">
+    <mxGraphModel dx="1050" dy="597" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gVNF3NikwQE1ZalJSSpd-6" value="&lt;div&gt;JiraRuleExtration&lt;/div&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+          <mxGeometry x="450" y="20" width="120" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-9" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;fillColor=default;" parent="gVNF3NikwQE1ZalJSSpd-6" vertex="1">
+          <mxGeometry x="55" y="300" width="10" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gVNF3NikwQE1ZalJSSpd-1" value="JiraClient" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+          <mxGeometry x="200" y="20" width="100" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="gVNF3NikwQE1ZalJSSpd-3" value="JiraServer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+          <mxGeometry x="340" y="20" width="100" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="gVNF3NikwQE1ZalJSSpd-7" value="JiraRuleExecutor" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+          <mxGeometry x="580" y="20" width="140" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-20" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;fillColor=default;" parent="gVNF3NikwQE1ZalJSSpd-7" vertex="1">
+          <mxGeometry x="65" y="420" width="10" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gVNF3NikwQE1ZalJSSpd-9" value="JiraViolationTracker" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;rounded=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="10" y="20" width="140" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="gVNF3NikwQE1ZalJSSpd-10" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+          <mxGeometry x="75" y="160" width="10" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-1" value="Получить issues из JQL" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0.002;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.964;exitY=0.037;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="gVNF3NikwQE1ZalJSSpd-10" target="gVNF3NikwQE1ZalJSSpd-2" edge="1">
+          <mxGeometry x="-0.0567" relative="1" as="geometry">
+            <mxPoint x="90" y="170" as="sourcePoint" />
+            <mxPoint x="215" y="170" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="170" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-4" value="Issues" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;exitX=0.004;exitY=1.001;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.003;entryY=0.357;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="gVNF3NikwQE1ZalJSSpd-2" target="gVNF3NikwQE1ZalJSSpd-10" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="260" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="160" y="260" />
+              <mxPoint x="190" y="260" />
+            </Array>
+            <mxPoint x="215" y="260" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-2" value="Отправить запрос" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;exitX=1.005;exitY=0.113;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.004;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="gVNF3NikwQE1ZalJSSpd-2" target="gVNF3NikwQE1ZalJSSpd-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="250" y="180" as="sourcePoint" />
+            <Array as="points" />
+            <mxPoint x="385" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-3" value="Ответ сервера" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=horizontal;exitX=-0.003;exitY=1.001;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.003;entryY=0.776;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="gVNF3NikwQE1ZalJSSpd-4" target="gVNF3NikwQE1ZalJSSpd-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="240" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="340" y="240" />
+              <mxPoint x="370" y="240" />
+            </Array>
+            <mxPoint x="395" y="240" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gVNF3NikwQE1ZalJSSpd-2" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+          <mxGeometry x="245" y="170" width="10" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="gVNF3NikwQE1ZalJSSpd-4" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;" parent="1" vertex="1">
+          <mxGeometry x="385" y="180" width="10" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-17" value="Получить нарушителей (violators) из issue" style="html=1;verticalAlign=bottom;endArrow=block;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="85" y="320" as="sourcePoint" />
+            <mxPoint x="505" y="320" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="300" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-31" value="Нарушители (violators)" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;exitX=-0.007;exitY=0.997;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="85" y="380" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="410" y="380" />
+              <mxPoint x="440" y="380" />
+            </Array>
+            <mxPoint x="499.9300000000003" y="379.82000000000016" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-32" value="Произведения действий над нарушениями (violations)" style="html=1;verticalAlign=bottom;endArrow=open;labelBackgroundColor=none;fontFamily=Verdana;fontSize=12;edgeStyle=elbowEdgeStyle;elbow=vertical;endFill=0;entryX=0.003;entryY=0.001;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="DYRL_JZSQu2P8z3fibKQ-20" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="84.99571428571426" y="440" as="sourcePoint" />
+            <mxPoint x="650" y="440" as="targetPoint" />
+            <Array as="points" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry y="120" width="690" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-36" value="loop" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry y="120" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-38" value="Итерация группы правил (rules) по JQL" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="50" y="120" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-44" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="10" y="270" width="680" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-40" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="DYRL_JZSQu2P8z3fibKQ-44" vertex="1">
+          <mxGeometry width="670" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-42" value="Итерация правил (rules) из группы" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="DYRL_JZSQu2P8z3fibKQ-44" vertex="1">
+          <mxGeometry x="80" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-41" value="loop" style="rounded=0;whiteSpace=wrap;html=1;" parent="DYRL_JZSQu2P8z3fibKQ-44" vertex="1">
+          <mxGeometry width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-45" value="" style="group" parent="DYRL_JZSQu2P8z3fibKQ-44" vertex="1" connectable="0">
+          <mxGeometry x="10" y="120" width="670" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-46" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="DYRL_JZSQu2P8z3fibKQ-45" vertex="1">
+          <mxGeometry width="650" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-47" value="Итерация нарушений (violations)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" parent="DYRL_JZSQu2P8z3fibKQ-45" vertex="1">
+          <mxGeometry x="70" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DYRL_JZSQu2P8z3fibKQ-48" value="loop" style="rounded=0;whiteSpace=wrap;html=1;" parent="DYRL_JZSQu2P8z3fibKQ-45" vertex="1">
+          <mxGeometry width="50" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

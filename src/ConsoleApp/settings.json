@@ -5,7 +5,6 @@
   "Senders": [
     {
       "Enabled": true,
-
       "Sender": {
         "$id": "1",
         "$type": "Model.Email.EmailSender, Model.Email",
