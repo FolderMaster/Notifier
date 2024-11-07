@@ -6,7 +6,7 @@
 
         private readonly JiraClient _client;
 
-        public JiraViolationTracker(JiraClient client, IEnumerable<JiraRule> rules)
+        public JiraViolationTracker(JiraClient client, IEnumerable<IJiraRule> rules)
         {
             _client = client;
             ReloadRules(rules);

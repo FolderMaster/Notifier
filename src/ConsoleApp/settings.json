@@ -2,12 +2,16 @@
   "DataBase": {
     "FileName": "userdata.json"
   },
+  "Jira": {
+    "Url": "",
+    "User": "",
+    "Password": ""
+  },
   "Senders": [
     {
       "Enabled": true,
-      "Sender": {
-        "$id": "1",
-        "$type": "Model.Email.EmailSender, Model.Email",
+      "Identifier": "Email",
+      "Properties": {
         "Url": "",
         "Port": 0,
         "Email": "",
@@ -15,36 +19,13 @@
       }
     }
   ],
-  "Jira": {
-    "Url": "",
-    "User": "",
-    "Password": ""
-  },
   "Rules": [
     {
       "Enabled": true,
-      "Extraction": {
-        "$type": "Model.Jira.Violations.RuleExtractions.WorklogStoryRuleExtraction, Model.Jira",
-        "StartDate": "2024-10-01T00:00:00Z"
-      },
-      "Executor": {
-        "$type": "ConsoleApp.StandardJiraRuleExecutor, ConsoleApp",
-        "Sender": {
-          "$ref": "1"
-        },
-        "Message": {
-          "$type": "Model.Email.EmailMessage, Model.Email",
-          "Subject": "Из Jira c любовью"
-        }
-      }
-    },
-    {
-      "Enabled": false,
-      "Extraction": {
-        "$type": "Model.Jira.Violations.RuleExtractions.RoughEstimationStoryRuleExtraction, Model.Jira"
-      },
-      "Executor": {
-        "$type": "ConsoleApp.StandardJiraRuleExecutor, ConsoleApp"
+      "Identifier": "WorklogStory",
+      "Properties": {
+        "Extraction.StartDate": "2024-10-01T00:00:00Z",
+        "Executor.Content": "Кажется, время залогировано в Story, проверь пожалуйста:"
       }
     }
   ]

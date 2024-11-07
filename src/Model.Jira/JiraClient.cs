@@ -10,9 +10,9 @@ namespace Model.Jira
 
         public JiraClient(string url, string user, string password)
         {
-            ArgumentNullException.ThrowIfNull(url, nameof(url));
-            ArgumentNullException.ThrowIfNull(user, nameof(user));
-            ArgumentNullException.ThrowIfNull(password, nameof(password));
+            ArgumentNullException.ThrowIfNullOrEmpty(url, nameof(url));
+            ArgumentNullException.ThrowIfNullOrEmpty(user, nameof(user));
+            ArgumentNullException.ThrowIfNullOrEmpty(password, nameof(password));
 
             _jiraClient = JiraRestClient.CreateRestClient(url, user, password);
         }

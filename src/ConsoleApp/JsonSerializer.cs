@@ -10,7 +10,7 @@ namespace ConsoleApp
             {
                 ObjectCreationHandling = ObjectCreationHandling.Replace,
                 TypeNameHandling = TypeNameHandling.All,
-                Formatting = Formatting.Indented
+                Formatting = Formatting.Indented,
             };
 
         public static T? Deserialize<T>(byte[] data)

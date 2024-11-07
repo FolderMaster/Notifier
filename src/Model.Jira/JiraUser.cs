@@ -6,9 +6,9 @@ namespace Model.Jira
     {
         public object Id { get; init; }
 
-        public string? Email { get; init; }
+        public string Email { get; init; }
 
-        public JiraUser(string username, string? email = null)
+        public JiraUser(string username, string email)
         {
             Id = username;
             Email = email;

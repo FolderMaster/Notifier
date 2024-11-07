@@ -2,9 +2,7 @@
 {
     public class ModuleSettings
     {
-        public string Name { get; set; }
-
-        public bool? Enabled { get; set; }
+        public bool Disabled { get; set; } = false;
 
         public IDictionary<string, object>? Properties { get; set; }
     }

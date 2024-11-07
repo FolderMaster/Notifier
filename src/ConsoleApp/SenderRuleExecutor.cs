@@ -4,15 +4,20 @@ using Model.Senders;
 
 namespace ConsoleApp
 {
-    public class StandardJiraRuleExecutor : IJiraRuleExecutor
+    public class SenderRuleExecutor : IJiraRuleExecutor
     {
-        private readonly ISender _sender;
+        private readonly IEnumerable<ISender> _senders;
 
         private readonly IMessage _message;
 
-        public StandardJiraRuleExecutor(ISender sender, IMessage message)
+        public object? Content { get; set; }
+
+        public SenderRuleExecutor(IEnumerable<ISender> senders, IMessage message)
         {
-            _sender = sender;
+            ArgumentNullException.ThrowIfNull(senders, nameof(senders));
+            ArgumentNullException.ThrowIfNull(message, nameof(message));
+
+            _senders = senders;
             _message = message;
         }
 
@@ -28,17 +33,16 @@ namespace ConsoleApp
                 ToDictionary(g => g.Key, g => g.AsEnumerable());
             foreach (var pair in violatorsDictionary)
             {
-                var content = "Кажется, время залогировано в Story, проверь пожалуйста:\n";
+                var content = $"{Content}\n";
                 var violator = pair.Key;
                 foreach (var violation in pair.Value)
                 {
                     content += $"{violation.Issue.Link}\n";
                 }
                 _message.Content = content;
-                // !!!!!!!!!!!!!!!!!!!!!!!
-                if (violator.Email == "")
+                foreach (var sender in _senders)
                 {
-                    await _sender.SendMessage(_message, new EmailUser(violator.Email));
+                    await sender.SendMessage(_message, new EmailUser(violator.Email));
                 }
             }
         }

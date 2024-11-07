@@ -1,22 +1,29 @@
-﻿using Model.Technical;
-using Model.Senders.Bots;
-using Model.Discord;
-using Model.Discord.Commands;
-using Model.Discord.Messages;
-using Model.Email;
-using Model.Jira;
-using Model.Jira.Violations;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 using ConsoleApp;
 using ConsoleApp.Settings;
+using ConsoleApp.Configurators;
 
-var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllBytes("settings.json"));
+using Model.Jira.Violations;
+using Model.Jira;
 
-var rules = RuleConfigurator.CreateModules(settings.Rules);
+var settingsPath = "settings.json";
 
-var jiraClient = new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password);
-var violationTracker = new JiraViolationTracker(jiraClient, rules);
+var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllBytes(settingsPath));
 
+var sendersConfigurator = new SendersConfigurator();
+var rulesConfigurator = new RulesConfigurator();
+
+var host = Host.CreateDefaultBuilder().ConfigureServices((services) =>
+{
+    sendersConfigurator.RegisterModules(settings.Senders, services);
+    rulesConfigurator.RegisterModules(settings.Rules, services);
+    services.AddSingleton(s => new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password));
+    services.AddSingleton<JiraViolationTracker>();
+}).Build();
+var rules = host.Services.GetServices<IJiraRule>();
+var violationTracker = host.Services.GetRequiredService<JiraViolationTracker>();
 await violationTracker.FindViolations();
 
 /**var dataBaseContext = new JsonDataBaseContext(settings.DataBase.FileName);

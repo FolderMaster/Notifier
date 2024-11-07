@@ -8,10 +8,17 @@ namespace Model.Jira.Violations
 
         private readonly IJiraRuleExecutor _executor;
 
+        public IJiraRuleExtraction Extraction => _extraction;
+
+        public IJiraRuleExecutor Executor => _executor;
+
         public string Jql => _extraction.Jql;
 
         public JiraRule(IJiraRuleExtraction extraction, IJiraRuleExecutor executor)
         {
+            ArgumentNullException.ThrowIfNull(extraction, nameof(extraction));
+            ArgumentNullException.ThrowIfNull(executor, nameof(executor));
+
             _extraction = extraction;
             _executor = executor;
         }
