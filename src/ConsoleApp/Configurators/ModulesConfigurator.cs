@@ -15,9 +15,7 @@ namespace ConsoleApp.Configurators
             _sendersFunc = CreateServicesFunc();
         }
 
-        protected virtual void RegisterServices(IServiceCollection services)
-        {
-        }
+        protected virtual void RegisterServices(IServiceCollection services) { }
 
         protected abstract IDictionary<Key, Func<IServiceProvider, Module>> CreateServicesFunc();
 
