@@ -22,7 +22,6 @@ var host = Host.CreateDefaultBuilder().ConfigureServices((services) =>
     services.AddSingleton(s => new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password));
     services.AddSingleton<JiraViolationTracker>();
 }).Build();
-var rules = host.Services.GetServices<IJiraRule>();
 var violationTracker = host.Services.GetRequiredService<JiraViolationTracker>();
 await violationTracker.FindViolations();
 
