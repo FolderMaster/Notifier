@@ -1,14 +1,7 @@
-﻿using Atlassian.Jira;
-
-namespace Model.Jira.Violations.RuleExtractions
+﻿namespace Model.Jira.Violations.RuleExtractions
 {
-    public class FixVersionsFeatureRuleExtraction : IJiraRuleExtraction
+    public class FixVersionsFeatureRuleExtraction : BaseReporterRuleExtraction
     {
-        public string Jql => "type = Feature AND fixVersion is EMPTY";
-
-        public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue)
-        {
-            yield return new JiraUser(issue.ReporterUser);
-        }
+        public override string Jql => "type = Feature AND fixVersion is EMPTY";
     }
 }

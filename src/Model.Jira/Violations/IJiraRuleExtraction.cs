@@ -6,6 +6,6 @@ namespace Model.Jira.Violations
     {
         public string Jql { get; }
 
-        public IAsyncEnumerable<JiraUser> FindViolators(Issue issue);
+        public Task<IEnumerable<JiraUser>> FindViolators(Issue issue);
     }
 }

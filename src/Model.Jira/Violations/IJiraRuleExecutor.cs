@@ -2,6 +2,6 @@
 {
     public interface IJiraRuleExecutor
     {
-        public Task Execute(IAsyncEnumerable<JiraViolation> violations);
+        public Task Execute(IEnumerable<JiraViolation> violations);
     }
 }

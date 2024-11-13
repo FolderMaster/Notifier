@@ -24,18 +24,20 @@ namespace Model.Jira.Violations
         }
 
         public async Task CheckIssues(IEnumerable<Issue> issues) =>
-            await _executor.Execute(GetViolations(issues));
+            await _executor.Execute(await GetViolations(issues));
 
-        private async IAsyncEnumerable<JiraViolation> GetViolations(IEnumerable<Issue> issues)
+        private async Task<IEnumerable<JiraViolation>> GetViolations(IEnumerable<Issue> issues)
         {
+            var result = new List<JiraViolation>();
             foreach (var issue in issues)
             {
-                await foreach (var violator in _extraction.FindViolators(issue))
+                foreach (var violator in await _extraction.FindViolators(issue))
                 {
-                    yield return new JiraViolation(violator, new JiraIssue(issue.JiraIdentifier,
-                        $"{issue.Jira.Url}browse/{issue.Key.ToString()}"));
+                    result.Add(new JiraViolation(violator, new JiraIssue(issue.JiraIdentifier,
+                        $"{issue.Jira.Url}browse/{issue.Key.ToString()}")));
                 }
             }
+            return result;
         }
     }
 }

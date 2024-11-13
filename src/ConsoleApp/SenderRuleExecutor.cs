@@ -21,15 +21,9 @@ namespace ConsoleApp
             _message = message;
         }
 
-        public async Task Execute(IAsyncEnumerable<JiraViolation> violations)
+        public async Task Execute(IEnumerable<JiraViolation> violations)
         {
-            var violationsList = new List<JiraViolation>();
-            await foreach(JiraViolation violation in violations)
-            {
-                violationsList.Add(violation);
-            }
-            
-            var violatorsDictionary = violationsList.GroupBy(v => v.User).
+            var violatorsDictionary = violations.GroupBy(v => v.User).
                 ToDictionary(g => g.Key, g => g.AsEnumerable());
             foreach (var pair in violatorsDictionary)
             {

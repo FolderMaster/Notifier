@@ -9,8 +9,9 @@ namespace Model.Jira.Violations.RuleExtractions
         public string Jql => $"type = story AND timespent > 0 {(StartDate != null ?
             $"AND worklogDate > '{StartDate?.ToString("yyyy-MM-dd")}'" : "")}";
 
-        public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue)
+        public async Task<IEnumerable<JiraUser>> FindViolators(Issue issue)
         {
+            var result = new List<JiraUser>();
             var worklogs = await issue.GetWorklogsAsync();
             var usernames = new List<string>();
             foreach (var worklog in worklogs)
@@ -19,9 +20,10 @@ namespace Model.Jira.Violations.RuleExtractions
                 if (worklog.TimeSpentInSeconds > 0 && !usernames.Contains(username))
                 {
                     usernames.Add(username);
-                    yield return new JiraUser(worklog.AuthorUser);
+                    result.Add(new JiraUser(worklog.AuthorUser));
                 }
             }
+            return result;
         }
     }
 }

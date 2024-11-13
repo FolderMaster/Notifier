@@ -6,8 +6,9 @@ namespace Model.Jira.Violations.RuleExtractions
     {
         public string Jql => "type = Story";
 
-        public async IAsyncEnumerable<JiraUser> FindViolators(Issue issue)
+        public async Task<IEnumerable<JiraUser>> FindViolators(Issue issue)
         {
+            var result = new List<JiraUser>();
             var changeLogs = await issue.GetChangeLogsAsync();
             changeLogs = changeLogs.Reverse();
             var usernames = new List<string>();
@@ -20,9 +21,10 @@ namespace Model.Jira.Violations.RuleExtractions
                     !username.Contains(username))
                 {
                     usernames.Add(username);
-                    yield return new JiraUser(changeLog.Author);
+                    result.Add(new JiraUser(changeLog.Author));
                 }
             }
+            return result;
         }
     }
 }
