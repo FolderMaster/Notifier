@@ -2,7 +2,7 @@
 using Model.Jira.Violations;
 using Model.Senders;
 
-namespace ConsoleApp
+namespace ConsoleApp.JiraRules.Executors
 {
     public class SenderRuleExecutor : IJiraRuleExecutor
     {

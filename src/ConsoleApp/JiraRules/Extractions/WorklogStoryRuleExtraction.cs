@@ -1,6 +1,10 @@
 ﻿using Atlassian.Jira;
 
-namespace Model.Jira.Violations.RuleExtractions
+using Model.Jira.Violations;
+
+using JiraUser = Model.Jira.JiraUser;
+
+namespace ConsoleApp.JiraRules.Extractions
 {
     public class WorklogStoryRuleExtraction : IJiraRuleExtraction
     {

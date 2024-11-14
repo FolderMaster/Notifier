@@ -3,7 +3,7 @@ using ConsoleApp.Settings.Senders;
 
 namespace ConsoleApp.Settings
 {
-    public class Settings
+    public class AppSettings
     {
         public DataBaseSettings DataBase { get; set; }
 

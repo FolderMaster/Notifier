@@ -1,27 +1,15 @@
-﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using Model.Jira.Violations;
 
 using ConsoleApp;
 using ConsoleApp.Settings;
-using ConsoleApp.Configurators;
-
-using Model.Jira.Violations;
-using Model.Jira;
 
 var settingsPath = "settings.json";
 
-var settings = JsonSerializer.Deserialize<Settings>(File.ReadAllBytes(settingsPath));
+var settings = JsonSerializer.Deserialize<AppSettings>(File.ReadAllBytes(settingsPath));
 
-var sendersConfigurator = new SendersConfigurator();
-var rulesConfigurator = new RulesConfigurator();
-
-var host = Host.CreateDefaultBuilder().ConfigureServices((services) =>
-{
-    sendersConfigurator.RegisterModules(settings.Senders, services);
-    rulesConfigurator.RegisterModules(settings.Rules, services);
-    services.AddSingleton(s => new JiraClient(settings.Jira.Url, settings.Jira.User, settings.Jira.Password));
-    services.AddSingleton<JiraViolationTracker>();
-}).Build();
+var host = Configurator.RegisterServices(settings);
 var violationTracker = host.Services.GetRequiredService<JiraViolationTracker>();
 await violationTracker.FindViolations();
 

@@ -1,4 +1,4 @@
-﻿namespace Model.Jira.Violations.RuleExtractions
+﻿namespace ConsoleApp.JiraRules.Extractions
 {
     public class RoughEstimationStoryRuleExtraction : BaseReporterRuleExtraction
     {

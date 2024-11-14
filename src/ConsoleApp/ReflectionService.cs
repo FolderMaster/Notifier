@@ -36,13 +36,5 @@
             }
             setProperty.SetValue(@object, value);
         }
-
-        public static void SetProperties(object @object, IDictionary<string, object> properties)
-        {
-            foreach (var property in properties)
-            {
-                SetProperty(@object, property.Key, property.Value);
-            }
-        }
     }
 }
