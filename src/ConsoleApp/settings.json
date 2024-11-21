@@ -21,10 +21,17 @@
   "Rules": [
     {
       "Identifier": "WorklogStory",
+      "Disabled": false,
       "Properties": {
         "Extraction.StartDate": "2024-10-01T00:00:00Z",
         "Executor.Content": "Кажется, время залогировано в Story, проверь пожалуйста:"
       }
     }
-  ]
+  ],
+  "StoryWorklogingSettings": {
+    "Identifier": "WorklogStory",
+    "Enabled": true,
+    "InspectionStartDate": "2024-10-01T00:00:00Z",
+    "ViolationMessage": "Кажется, время залогировано в Story, проверь пожалуйста:"
+  }
 }

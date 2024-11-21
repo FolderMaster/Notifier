@@ -4,14 +4,21 @@ using Model.Jira.Violations;
 
 using ConsoleApp;
 using ConsoleApp.Settings;
+using ConsoleApp.Inspection;
 
 var settingsPath = "settings.json";
 
 var settings = JsonSerializer.Deserialize<AppSettings>(File.ReadAllBytes(settingsPath));
 
-var host = Configurator.RegisterServices(settings);
-var violationTracker = host.Services.GetRequiredService<JiraViolationTracker>();
-await violationTracker.FindViolations();
+//var host = Configurator.RegisterServices(settings);
+//var violationTracker = host.Services.GetRequiredService<JiraViolationTracker>();
+//await violationTracker.FindViolations();
+
+
+var host = NewConfigurator.RegisterServices(settings);
+
+var inspectorController = host.Services.GetRequiredService<InspectorController>();
+await inspectorController.FindViolations();
 
 /**var dataBaseContext = new JsonDataBaseContext(settings.DataBase.FileName);
 dataBaseContext.Load();

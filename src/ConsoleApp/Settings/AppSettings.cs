@@ -1,4 +1,5 @@
-﻿using ConsoleApp.Settings.Rules;
+﻿using ConsoleApp.Settings.InspectorSettings;
+using ConsoleApp.Settings.Rules;
 using ConsoleApp.Settings.Senders;
 
 namespace ConsoleApp.Settings
@@ -12,5 +13,8 @@ namespace ConsoleApp.Settings
         public IEnumerable<SenderSettings> Senders { get; set; }
 
         public IEnumerable<RuleSettings> Rules { get; set; }
+
+        public StoryWorklogingSettings StoryWorklogingSettings { get; set; }
+        
     }
 }
