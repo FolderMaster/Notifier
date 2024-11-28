@@ -8,13 +8,15 @@ namespace Model.Email
     {
         public object Content { get; set; }
 
-        public string? Subject { get; }
+        public string? Subject { get; set; }
 
         public EmailMessage(object content, string? subject = null)
         {
             Content = content;
-            Subject = subject;
+            Subject = subject ?? "";
         }
+
+        public EmailMessage() : this("") { }
 
         public MimeMessage CreateMimeMessage()
         {

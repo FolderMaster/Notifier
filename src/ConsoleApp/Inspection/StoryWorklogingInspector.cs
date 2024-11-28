@@ -11,12 +11,16 @@ namespace ConsoleApp.Inspection
         private DateTime? _startDate;
         private string _jql = $"type = story AND timespent > 0";
 
-        public StoryWorklogingInspector(JiraClient client, StoryWorklogingSettings settigs)
+        private string _message;
+
+        public StoryWorklogingInspector(JiraClient client, StoryWorklogingSettings settings)
         {
             _client = client;
-            _startDate = settigs.InspectionStartDate;
+            _startDate = settings.InspectionStartDate;
 
-            if (settigs.InspectionStartDate != null)
+            _message = settings.ViolationMessage;
+
+            if (settings.InspectionStartDate != null)
             {
                 _jql += $" AND worklogDate > '{_startDate?.ToString("yyyy-MM-dd")}'";
             }
@@ -48,5 +52,7 @@ namespace ConsoleApp.Inspection
 
             return violations;
         }
+
+        public override string ToString() => _message;
     }
 }

@@ -15,6 +15,8 @@ namespace ConsoleApp.Settings
         public IEnumerable<RuleSettings> Rules { get; set; }
 
         public StoryWorklogingSettings StoryWorklogingSettings { get; set; }
+
+        public EmailSettings Email { get; set; }
         
     }
 }

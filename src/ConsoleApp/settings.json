@@ -28,6 +28,13 @@
       }
     }
   ],
+  "Email": {
+    "Url": "",
+    "Port": 0,
+    "Email": "",
+    "Name": "",
+    "Subject": ""
+  },
   "StoryWorklogingSettings": {
     "Identifier": "WorklogStory",
     "Enabled": true,
