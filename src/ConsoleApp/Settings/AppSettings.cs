@@ -1,4 +1,5 @@
-﻿using ConsoleApp.Settings.InspectorSettings;
+﻿using ConsoleApp.Settings.Executors;
+using ConsoleApp.Settings.InspectorSettings;
 using ConsoleApp.Settings.Rules;
 using ConsoleApp.Settings.Senders;
 
@@ -17,6 +18,9 @@ namespace ConsoleApp.Settings
         public StoryWorklogingSettings StoryWorklogingSettings { get; set; }
 
         public EmailSettings Email { get; set; }
-        
+
+        public BossSendExecutorSettings BossSendExecutor { get; set; }
+
+        public TimerSettings Timer { get; set; }
     }
 }

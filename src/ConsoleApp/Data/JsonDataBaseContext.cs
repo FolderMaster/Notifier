@@ -1,10 +1,12 @@
-﻿namespace ConsoleApp.Data
+﻿using ConsoleApp.Inspection;
+
+namespace ConsoleApp.Data
 {
-    public class JsonDataBaseContext
+    public class JsonDataBaseContext<T> : IDataBaseContext<T>
     {
         public readonly string _fileName;
 
-        public List<UserData> UserData { get; set; }
+        public List<T> Data { get; private set; }
 
         public JsonDataBaseContext(string fileName)
         {
@@ -14,7 +16,7 @@
 
         public void Save()
         {
-            var json = JsonSerializer.Serialize(UserData);
+            var json = JsonSerializer.Serialize(Data);
             File.WriteAllBytes(_fileName, json);
         }
 
@@ -23,12 +25,12 @@
             if (File.Exists(_fileName))
             {
                 var json = File.ReadAllBytes(_fileName);
-                var newUserData = JsonSerializer.Deserialize<List<UserData>>(json);
-                UserData = newUserData != null ? newUserData : new List<UserData>();
+                var newUserData = JsonSerializer.Deserialize<List<T>>(json);
+                Data = newUserData != null ? newUserData : new List<T>();
             }
             else
             {
-                UserData = new List<UserData>();
+                Data = new List<T>();
             }
         }
     }

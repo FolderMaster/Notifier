@@ -2,12 +2,13 @@
 using Model.Email;
 using Model.Jira;
 
-namespace ConsoleApp.Inspection
+namespace ConsoleApp.Inspection.SenderContexts
 {
     public class EmailSenderContext : BaseSenderContext
     {
         public EmailSenderContext(EmailSender sender, EmailMessage message) :
-            base(sender, message) { }
+            base(sender, message)
+        { }
 
         public override IUser ExtractUserForSending(JiraUser user) => new EmailUser(user.Email);
     }

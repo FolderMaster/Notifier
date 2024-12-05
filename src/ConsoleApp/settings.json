@@ -1,12 +1,32 @@
 {
   "DataBase": {
-    "FileName": "userdata.json"
+    "FileName": "violations.json"
   },
   "Jira": {
     "Url": "",
     "User": "",
     "Password": ""
   },
+  "Email": {
+    "Url": "",
+    "Port": 0,
+    "Email": "",
+    "Name": "Jiraman",
+    "Subject": "Из Jira c любовью"
+  },
+  "StoryWorklogingSettings": {
+    "Identifier": "WorklogStory",
+    "Enabled": true,
+    "InspectionStartDate": "2024-12-04T00:00:00Z",
+    "ViolationMessage": "Кажется, время залогировано в Story, проверь пожалуйста:"
+  },
+  "Timer": {
+    "Interval": "00:01:00"
+  },
+  "BossSendExecutor": {
+    "Boss": ""
+  },
+
   "Senders": [
     {
       "Identifier": "Email",
@@ -27,18 +47,5 @@
         "Executor.Content": "Кажется, время залогировано в Story, проверь пожалуйста:"
       }
     }
-  ],
-  "Email": {
-    "Url": "",
-    "Port": 0,
-    "Email": "",
-    "Name": "",
-    "Subject": ""
-  },
-  "StoryWorklogingSettings": {
-    "Identifier": "WorklogStory",
-    "Enabled": true,
-    "InspectionStartDate": "2024-10-01T00:00:00Z",
-    "ViolationMessage": "Кажется, время залогировано в Story, проверь пожалуйста:"
-  }
+  ]
 }

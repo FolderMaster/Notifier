@@ -1,80 +1,37 @@
-﻿using Model.Jira;
-
-namespace ConsoleApp.Inspection
+﻿namespace ConsoleApp.Inspection
 {
     public class InspectorController
     {
         private IEnumerable<IInspector> _inspectors;
 
-        private ISenderContext _senderContext;
+        private IFilter _filter;
+
+        private IEnumerable<IExecutor> _executors;
 
         public InspectorController(IEnumerable<IInspector> inspectors,
-            ISenderContext senderContext)
+            IEnumerable<IExecutor> executors, IFilter filter)
         {
             _inspectors = inspectors;
-            _senderContext = senderContext;
+            _filter = filter;
+            _executors = executors;
         }
 
         public async Task FindViolations()
         {
-            /**var userDictionary = new Dictionary<JiraUser,
-                Dictionary<IInspector, IEnumerable<JiraIssue>>>();
+            var inspectorViolations = new List<InspectorViolation>();
             foreach (var inspector in _inspectors)
             {
                 var violations = await inspector.Inspect();
-                var userIssueGroups = violations.GroupBy(v => v.User, v => v.Issue);
-                foreach (var userIssueGroup in userIssueGroups)
+                foreach (var violation in violations)
                 {
-                    var user = userIssueGroup.Key;
-                    if (!userDictionary.Keys.Contains(user))
-                    {
-                        userDictionary.Add(user,
-                            new Dictionary<IInspector, IEnumerable<JiraIssue>>());
-                    }
-                    userDictionary[user].Add(inspector, userIssueGroup);
+                    inspectorViolations.Add(new InspectorViolation(violation, inspector));
                 }
             }
-            
-            foreach (var userGroup in userDictionary)
+            var filteredInspectorViolations = _filter.Filter(inspectorViolations);
+            foreach (var executor in _executors)
             {
-                var content = "";
-                foreach (var inspectorGroup in userGroup.Value)
-                {
-                    content += $"{inspectorGroup.Key}:\n";
-                    foreach (var issue in inspectorGroup.Value)
-                    {
-                        content += $"\t- {issue.Link}\n";
-                    }
-                }
-                _senderContext.Message.Content = content;
-                await _senderContext.SendMessage(userGroup.Key);
-            }**/
-
-            var inspectorDictionary = new Dictionary<IInspector,
-                Dictionary<JiraUser, IEnumerable<JiraIssue>>>();
-            foreach (var inspector in _inspectors)
-            {
-                var violations = await inspector.Inspect();
-                var userIssueDictionary = violations.GroupBy(v => v.User, v => v.Issue).
-                    ToDictionary(p => p.Key, p => (IEnumerable<JiraIssue>)p);
-                inspectorDictionary.Add(inspector, userIssueDictionary);
+                await executor.Execute(filteredInspectorViolations);
             }
-
-            var content = "";
-            foreach (var inspectorGroup in inspectorDictionary)
-            {
-                content += $"{inspectorGroup.Key}\n";
-                foreach (var userGroup in inspectorGroup.Value)
-                {
-                    content += $"\t- {userGroup.Key.Id}:\n";
-                    foreach (var issue in userGroup.Value)
-                    {
-                        content += $"\t\t- {issue.Link}\n";
-                    }
-                }
-            }
-            _senderContext.Message.Content = content;
-            await _senderContext.SendMessage(new JiraUser("", "???"));
         }
     }
 }

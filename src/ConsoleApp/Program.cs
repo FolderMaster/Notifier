@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-using Model.Jira.Violations;
-
 using ConsoleApp;
 using ConsoleApp.Settings;
 using ConsoleApp.Inspection;
@@ -18,7 +16,12 @@ var settings = JsonSerializer.Deserialize<AppSettings>(File.ReadAllBytes(setting
 var host = NewConfigurator.RegisterServices(settings);
 
 var inspectorController = host.Services.GetRequiredService<InspectorController>();
-await inspectorController.FindViolations();
+var timer = host.Services.GetRequiredService<ITimer>();
+
+timer.Action = async () => await inspectorController.FindViolations();
+timer.Start();
+
+Console.ReadKey();
 
 /**var dataBaseContext = new JsonDataBaseContext(settings.DataBase.FileName);
 dataBaseContext.Load();

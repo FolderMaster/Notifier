@@ -1,4 +1,5 @@
-﻿using Model.Jira;
+﻿using Model;
+using Model.Jira;
 using Model.Senders;
 
 namespace ConsoleApp.Inspection
@@ -8,5 +9,7 @@ namespace ConsoleApp.Inspection
         public IMessage Message { get; }
 
         public Task SendMessage(JiraUser user);
+
+        public Task SendMessage(IUser user);
     }
 }

@@ -2,7 +2,7 @@
 using Model.Jira;
 using Model.Senders;
 
-namespace ConsoleApp.Inspection
+namespace ConsoleApp.Inspection.SenderContexts
 {
     public abstract class BaseSenderContext : ISenderContext
     {
@@ -18,6 +18,9 @@ namespace ConsoleApp.Inspection
 
         public async Task SendMessage(JiraUser user) =>
             await _sender.SendMessage(Message, ExtractUserForSending(user));
+
+        public async Task SendMessage(IUser user) =>
+            await _sender.SendMessage(Message, user);
 
         public abstract IUser ExtractUserForSending(JiraUser user);
     }
