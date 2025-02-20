@@ -29,9 +29,9 @@ namespace ConsoleApp
                     Name = settings.Email.Name
                 };
                 var emailMessage = new EmailMessage("", settings.Email.Subject);
-                var timer = new ClassicTimer()
+                var timer = new HangfireTimer()
                 {
-                    Interval = settings.Timer.Interval.TotalMilliseconds
+                    Interval = settings.Timer.Interval
                 };
                 var bossUser = new EmailUser(settings.BossSendExecutor.Boss.ToString());
                 var dataBaseContext = new
@@ -55,11 +55,13 @@ namespace ConsoleApp
             return host;
         }
 
-        private static void RegisterInspectors(IServiceCollection services, JiraClient jiraClient, AppSettings settings)
+        private static void RegisterInspectors(IServiceCollection services, JiraClient jiraClient,
+            AppSettings settings)
         {
             if (settings.StoryWorklogingSettings.Enabled)
             {
-                services.AddSingleton<IInspector>(new StoryWorklogingInspector(jiraClient, settings.StoryWorklogingSettings));
+                services.AddSingleton<IInspector>(new StoryWorklogingInspector(jiraClient,
+                    settings.StoryWorklogingSettings));
             }
         }
     }

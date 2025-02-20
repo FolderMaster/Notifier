@@ -1,10 +1,12 @@
-﻿namespace ConsoleApp.Inspection
+﻿using System.Linq.Expressions;
+
+namespace ConsoleApp.Inspection
 {
     public interface ITimer
     {
-        public Action? Action { get; set; }
+        public Expression<Func<Task>>? TaskExpression { get; set; }
 
-        public double Interval { get; set; }
+        public TimeSpan Interval { get; set; }
 
         public void Start();
 

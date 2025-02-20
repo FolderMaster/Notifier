@@ -3,9 +3,12 @@
 using ConsoleApp;
 using ConsoleApp.Settings;
 using ConsoleApp.Inspection;
+using Hangfire;
+using Hangfire.MemoryStorage;
+
+GlobalConfiguration.Configuration.UseMemoryStorage();
 
 var settingsPath = "settings.json";
-
 var settings = JsonSerializer.Deserialize<AppSettings>(File.ReadAllBytes(settingsPath));
 
 //var host = Configurator.RegisterServices(settings);
@@ -18,10 +21,14 @@ var host = NewConfigurator.RegisterServices(settings);
 var inspectorController = host.Services.GetRequiredService<InspectorController>();
 var timer = host.Services.GetRequiredService<ITimer>();
 
-timer.Action = async () => await inspectorController.FindViolations();
+timer.TaskExpression = () => inspectorController.FindViolations();
 timer.Start();
 
-Console.ReadKey();
+using (var server = new BackgroundJobServer())
+{
+    Console.WriteLine("Hangfire Server started. Press any key to exit...");
+    Console.ReadKey();
+}
 
 /**var dataBaseContext = new JsonDataBaseContext(settings.DataBase.FileName);
 dataBaseContext.Load();

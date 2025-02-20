@@ -1,4 +1,5 @@
-﻿using System.Timers;
+﻿using System.Linq.Expressions;
+using System.Timers;
 
 using Timer = System.Timers.Timer;
 
@@ -8,13 +9,13 @@ namespace ConsoleApp.Inspection
     {
         private Timer _timer;
 
-        public double Interval
+        public TimeSpan Interval
         {
-            get => _timer.Interval;
-            set => _timer.Interval = value;
+            get => TimeSpan.FromMilliseconds(_timer.Interval);
+            set => _timer.Interval = value.TotalMilliseconds;
         }
 
-        public Action? Action { get; set; }
+        public Expression<Func<Task>>? TaskExpression { get; set; }
 
         public ClassicTimer()
         {
@@ -35,7 +36,11 @@ namespace ConsoleApp.Inspection
 
         private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
         {
-            Action?.Invoke();
+            if (TaskExpression != null)
+            {
+                var action = TaskExpression.Compile();
+                action.Invoke();
+            }
         }
     }
 }
