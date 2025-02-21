@@ -29,7 +29,7 @@ namespace ConsoleApp
                     Name = settings.Email.Name
                 };
                 var emailMessage = new EmailMessage("", settings.Email.Subject);
-                var timer = new HangfireTimer()
+                var timer = new HangfireTimer<InspectorController>()
                 {
                     Interval = settings.Timer.Interval
                 };

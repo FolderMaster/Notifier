@@ -4,8 +4,6 @@ namespace ConsoleApp.Inspection
 {
     public interface ITimer
     {
-        public Expression<Func<Task>>? TaskExpression { get; set; }
-
         public TimeSpan Interval { get; set; }
 
         public void Start();

@@ -15,7 +15,7 @@ namespace ConsoleApp.Inspection
             set => _timer.Interval = value.TotalMilliseconds;
         }
 
-        public Expression<Func<Task>>? TaskExpression { get; set; }
+        public Func<Task> Task { get; set; }
 
         public ClassicTimer()
         {
@@ -36,11 +36,7 @@ namespace ConsoleApp.Inspection
 
         private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
         {
-            if (TaskExpression != null)
-            {
-                var action = TaskExpression.Compile();
-                action.Invoke();
-            }
+            Task?.Invoke();
         }
     }
 }

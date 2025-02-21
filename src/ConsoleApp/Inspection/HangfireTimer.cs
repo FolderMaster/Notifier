@@ -3,13 +3,13 @@ using System.Linq.Expressions;
 
 namespace ConsoleApp.Inspection
 {
-    public class HangfireTimer : ITimer
+    public class HangfireTimer<T> : ITimer
     {
         private static int _nextId = 0;
 
         private string? _jobId;
 
-        public Expression<Func<Task>>? TaskExpression { get; set; }
+        public Expression<Func<T, Task>>? TaskExpression { get; set; }
 
         public TimeSpan Interval { get; set; }
 

@@ -18,14 +18,14 @@ var settings = JsonSerializer.Deserialize<AppSettings>(File.ReadAllBytes(setting
 
 var host = NewConfigurator.RegisterServices(settings);
 
-var inspectorController = host.Services.GetRequiredService<InspectorController>();
-var timer = host.Services.GetRequiredService<ITimer>();
-
-timer.TaskExpression = () => inspectorController.FindViolations();
-timer.Start();
+var timer = host.Services.GetRequiredService<ITimer>() as HangfireTimer<InspectorController>;
 
 using (var server = new BackgroundJobServer())
 {
+    GlobalConfiguration.Configuration.UseActivator(new ServiceProviderJobActivator(host.Services));
+    timer.TaskExpression = (controller) => controller.FindViolations();
+    timer.Start();
+
     Console.WriteLine("Hangfire Server started. Press any key to exit...");
     Console.ReadKey();
 }
